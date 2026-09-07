@@ -1,0 +1,2650 @@
+/* =========================================================
+   ORVANA COMPANY
+   STYLE.CSS
+========================================================= */
+
+
+/* =========================================================
+   VARIABLES
+========================================================= */
+
+:root {
+
+    --black: #080808;
+
+    --black-soft: #111111;
+
+    --gold: #f4b51c;
+
+    --gold-dark: #c98e0b;
+
+    --cream: #f2eee7;
+
+    --white: #ffffff;
+
+    --gray: #77736c;
+
+    --border: rgba(0, 0, 0, 0.12);
+
+    --shadow:
+        0 25px 70px rgba(0, 0, 0, 0.12);
+
+}
+
+
+/* =========================================================
+   RESET
+========================================================= */
+
+* {
+
+    margin: 0;
+
+    padding: 0;
+
+    box-sizing: border-box;
+
+}
+
+
+html {
+
+    scroll-behavior: smooth;
+
+}
+
+
+body {
+
+    font-family:
+        "DM Sans",
+        Arial,
+        sans-serif;
+
+    color:
+        var(--black);
+
+    background:
+        var(--white);
+
+    line-height:
+        1.6;
+
+    overflow-x:
+        hidden;
+
+}
+
+
+img {
+
+    max-width:
+        100%;
+
+    display:
+        block;
+
+}
+
+
+a {
+
+    color:
+        inherit;
+
+    text-decoration:
+        none;
+
+}
+
+
+button {
+
+    font-family:
+        inherit;
+
+}
+
+
+/* =========================================================
+   CONTAINER
+========================================================= */
+
+.container {
+
+    width:
+        min(
+            1180px,
+            calc(100% - 40px)
+        );
+
+    margin:
+        0 auto;
+
+}
+
+
+/* =========================================================
+   NAVBAR
+========================================================= */
+
+.navbar {
+
+    position:
+        sticky;
+
+    top:
+        0;
+
+    z-index:
+        1000;
+
+    background:
+        rgba(255,255,255,.95);
+
+    backdrop-filter:
+        blur(15px);
+
+    border-bottom:
+        1px solid
+        rgba(0,0,0,.08);
+
+}
+
+
+.navbar-container {
+
+    min-height:
+        82px;
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        space-between;
+
+}
+
+
+.logo-link img {
+
+    width:
+        145px;
+
+}
+
+
+.navigation {
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    gap:
+        32px;
+
+}
+
+
+.navigation a {
+
+    font-size:
+        14px;
+
+    font-weight:
+        600;
+
+    position:
+        relative;
+
+    padding:
+        8px 0;
+
+}
+
+
+.navigation a::after {
+
+    content:
+        "";
+
+    position:
+        absolute;
+
+    left:
+        0;
+
+    bottom:
+        0;
+
+    width:
+        0;
+
+    height:
+        2px;
+
+    background:
+        var(--gold);
+
+    transition:
+        width .25s ease;
+
+}
+
+
+.navigation a:hover::after {
+
+    width:
+        100%;
+
+}
+
+
+/* =========================================================
+   MOBILE MENU
+========================================================= */
+
+.menu-button {
+
+    display:
+        none;
+
+    width:
+        44px;
+
+    height:
+        44px;
+
+    border:
+        none;
+
+    background:
+        transparent;
+
+    cursor:
+        pointer;
+
+}
+
+
+.menu-button span {
+
+    display:
+        block;
+
+    width:
+        25px;
+
+    height:
+        2px;
+
+    background:
+        var(--black);
+
+    margin:
+        5px auto;
+
+}
+
+
+/* =========================================================
+   HERO
+========================================================= */
+
+.hero {
+
+    min-height:
+        calc(100vh - 82px);
+
+    background:
+        var(--cream);
+
+    position:
+        relative;
+
+    overflow:
+        hidden;
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+}
+
+
+.hero-container {
+
+    display:
+        grid;
+
+    grid-template-columns:
+        1fr .8fr;
+
+    gap:
+        70px;
+
+    align-items:
+        center;
+
+    padding:
+        80px 0;
+
+}
+
+
+.hero-content {
+
+    position:
+        relative;
+
+    z-index:
+        5;
+
+}
+
+
+.small-title {
+
+    font-size:
+        12px;
+
+    letter-spacing:
+        .25em;
+
+    font-weight:
+        700;
+
+    margin-bottom:
+        20px;
+
+}
+
+
+.hero h1 {
+
+    font-family:
+        "Playfair Display",
+        Georgia,
+        serif;
+
+    font-size:
+        clamp(60px, 8vw, 110px);
+
+    line-height:
+        .88;
+
+    letter-spacing:
+        -.06em;
+
+}
+
+
+.hero h1 span {
+
+    display:
+        block;
+
+    color:
+        var(--gold-dark);
+
+    font-size:
+        .43em;
+
+    letter-spacing:
+        .04em;
+
+    margin-top:
+        18px;
+
+}
+
+
+.hero-line {
+
+    width:
+        110px;
+
+    height:
+        3px;
+
+    background:
+        var(--gold);
+
+    margin-top:
+        35px;
+
+}
+
+
+.hero-tagline {
+
+    font-family:
+        "Playfair Display",
+        Georgia,
+        serif;
+
+    font-size:
+        25px;
+
+    font-style:
+        italic;
+
+    margin-top:
+        15px;
+
+}
+
+
+.hero-description {
+
+    max-width:
+        540px;
+
+    color:
+        var(--gray);
+
+    font-size:
+        17px;
+
+    margin-top:
+        22px;
+
+}
+
+
+.hero-buttons {
+
+    display:
+        flex;
+
+    flex-wrap:
+        wrap;
+
+    gap:
+        12px;
+
+    margin-top:
+        32px;
+
+}
+
+
+.button {
+
+    min-height:
+        52px;
+
+    display:
+        inline-flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        center;
+
+    padding:
+        0 24px;
+
+    border-radius:
+        100px;
+
+    font-size:
+        14px;
+
+    font-weight:
+        700;
+
+    transition:
+        all .3s ease;
+
+}
+
+
+.button:hover {
+
+    transform:
+        translateY(-3px);
+
+}
+
+
+.button-dark {
+
+    background:
+        var(--black);
+
+    color:
+        var(--white);
+
+}
+
+
+.button-outline {
+
+    border:
+        1px solid
+        var(--black);
+
+}
+
+
+.hero-visual {
+
+    position:
+        relative;
+
+    display:
+        flex;
+
+    justify-content:
+        center;
+
+}
+
+
+.hero-frame {
+
+    width:
+        min(460px,100%);
+
+    padding:
+        18px;
+
+    background:
+        var(--white);
+
+    box-shadow:
+        var(--shadow);
+
+    transform:
+        rotate(2deg);
+
+}
+
+
+.hero-frame img {
+
+    width:
+        100%;
+
+}
+
+
+.hero-star {
+
+    position:
+        absolute;
+
+    right:
+        3%;
+
+    top:
+        5%;
+
+    color:
+        var(--gold);
+
+    font-size:
+        80px;
+
+}
+
+
+.hero-decoration {
+
+    position:
+        absolute;
+
+    background:
+        var(--gold);
+
+}
+
+
+.hero-decoration-1 {
+
+    width:
+        260px;
+
+    height:
+        260px;
+
+    right:
+        -150px;
+
+    top:
+        -150px;
+
+    transform:
+        rotate(45deg);
+
+}
+
+
+.hero-decoration-2 {
+
+    width:
+        90px;
+
+    height:
+        90px;
+
+    left:
+        8%;
+
+    bottom:
+        8%;
+
+    clip-path:
+        polygon(
+            50% 0,
+            61% 39%,
+            100% 50%,
+            61% 61%,
+            50% 100%,
+            39% 61%,
+            0 50%,
+            39% 39%
+        );
+
+}
+
+
+.hero-circle {
+
+    position:
+        absolute;
+
+    width:
+        700px;
+
+    height:
+        700px;
+
+    border:
+        100px solid
+        rgba(0,0,0,.05);
+
+    border-radius:
+        50%;
+
+    left:
+        -520px;
+
+    bottom:
+        -430px;
+
+}
+
+
+/* =========================================================
+   SECTIONS
+========================================================= */
+
+.section {
+
+    padding:
+        120px 0;
+
+}
+
+
+.section-grid {
+
+    display:
+        grid;
+
+    grid-template-columns:
+        .8fr 1.2fr;
+
+    gap:
+        90px;
+
+}
+
+
+.section-number {
+
+    font-size:
+        12px;
+
+    font-weight:
+        700;
+
+    letter-spacing:
+        .2em;
+
+    margin-bottom:
+        20px;
+
+}
+
+
+.section-title h2 {
+
+    font-family:
+        "Playfair Display",
+        Georgia,
+        serif;
+
+    font-size:
+        clamp(45px,6vw,75px);
+
+    line-height:
+        1;
+
+    letter-spacing:
+        -.04em;
+
+}
+
+
+.section-title h2 span {
+
+    color:
+        var(--gold-dark);
+
+}
+
+
+.section-text {
+
+    font-size:
+        17px;
+
+    color:
+        #55514b;
+
+}
+
+
+.section-text p {
+
+    margin-bottom:
+        22px;
+
+}
+
+
+.section-text .lead-text {
+
+    font-family:
+        "Playfair Display",
+        Georgia,
+        serif;
+
+    font-size:
+        27px;
+
+    line-height:
+        1.35;
+
+    color:
+        var(--black);
+
+}
+
+
+/* =========================================================
+   VISION
+========================================================= */
+
+.vision-section {
+
+    padding:
+        40px 0 120px;
+
+}
+
+
+.vision-grid {
+
+    display:
+        grid;
+
+    grid-template-columns:
+        1fr 1fr;
+
+    gap:
+        20px;
+
+}
+
+
+.vision-card {
+
+    padding:
+        50px;
+
+    min-height:
+        330px;
+
+    background:
+        var(--cream);
+
+}
+
+
+.dark-card {
+
+    background:
+        var(--black);
+
+    color:
+        var(--white);
+
+}
+
+
+.vision-icon {
+
+    color:
+        var(--gold-dark);
+
+    font-weight:
+        700;
+
+}
+
+
+.card-label {
+
+    margin-top:
+        65px;
+
+    font-size:
+        11px;
+
+    font-weight:
+        700;
+
+    letter-spacing:
+        .2em;
+
+    color:
+        var(--gold-dark);
+
+}
+
+
+.vision-card h3 {
+
+    font-family:
+        "Playfair Display",
+        Georgia,
+        serif;
+
+    font-size:
+        42px;
+
+    line-height:
+        1.1;
+
+    margin-top:
+        8px;
+
+}
+
+
+.vision-card p:last-child {
+
+    margin-top:
+        15px;
+
+    color:
+        var(--gray);
+
+}
+
+
+.dark-card p:last-child {
+
+    color:
+        #aaa;
+
+}
+
+
+/* =========================================================
+   VALUES
+========================================================= */
+
+.values-section {
+
+    background:
+        var(--black);
+
+    color:
+        var(--white);
+
+}
+
+
+.center-title {
+
+    text-align:
+        center;
+
+    max-width:
+        760px;
+
+    margin:
+        0 auto 60px;
+
+}
+
+
+.center-title h2 {
+
+    font-family:
+        "Playfair Display",
+        Georgia,
+        serif;
+
+    font-size:
+        clamp(45px,6vw,75px);
+
+    line-height:
+        1;
+
+    margin-bottom:
+        20px;
+
+}
+
+
+.center-title > p:last-child {
+
+    color:
+        #aaa;
+
+}
+
+
+.values-grid {
+
+    display:
+        grid;
+
+    grid-template-columns:
+        repeat(3,1fr);
+
+    gap:
+        18px;
+
+}
+
+
+.value-card {
+
+    min-height:
+        350px;
+
+    border:
+        1px solid
+        rgba(255,255,255,.14);
+
+    padding:
+        32px;
+
+    transition:
+        all .3s ease;
+
+}
+
+
+.value-card:hover {
+
+    transform:
+        translateY(-8px);
+
+    border-color:
+        var(--gold);
+
+}
+
+
+.value-top {
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        space-between;
+
+}
+
+
+.value-top span {
+
+    font-size:
+        12px;
+
+    font-weight:
+        700;
+
+    color:
+        var(--gold);
+
+}
+
+
+.value-symbol {
+
+    width:
+        45px;
+
+    height:
+        45px;
+
+    border:
+        1px solid
+        rgba(255,255,255,.2);
+
+    border-radius:
+        50%;
+
+    display:
+        grid;
+
+    place-items:
+        center;
+
+    color:
+        var(--gold);
+
+}
+
+
+.value-card h3 {
+
+    font-family:
+        "Playfair Display",
+        Georgia,
+        serif;
+
+    font-size:
+        48px;
+
+    margin-top:
+        100px;
+
+    margin-bottom:
+        15px;
+
+}
+
+
+.value-card p {
+
+    color:
+        #999;
+
+}
+
+
+/* =========================================================
+   PEOPLE
+========================================================= */
+
+.people-section {
+
+    background:
+        var(--cream);
+
+}
+
+
+.people-heading {
+
+    display:
+        flex;
+
+    justify-content:
+        space-between;
+
+    align-items:
+        flex-end;
+
+    gap:
+        40px;
+
+    margin-bottom:
+        60px;
+
+}
+
+
+.people-heading h2 {
+
+    font-family:
+        "Playfair Display",
+        Georgia,
+        serif;
+
+    font-size:
+        clamp(45px,6vw,75px);
+
+    line-height:
+        1;
+
+}
+
+
+.people-heading h2 span {
+
+    display:
+        block;
+
+    color:
+        var(--gold-dark);
+
+}
+
+
+.people-heading > p {
+
+    max-width:
+        330px;
+
+    color:
+        var(--gray);
+
+}
+
+
+/* =========================================================
+   EMPLOYEE GRID
+========================================================= */
+
+.people-grid {
+
+    display:
+        grid;
+
+    grid-template-columns:
+        repeat(3,1fr);
+
+    gap:
+        24px;
+
+}
+
+
+/* =========================================================
+   EMPLOYEE CARD
+========================================================= */
+
+.person-card {
+
+    width:
+        100%;
+
+    border:
+        none;
+
+    padding:
+        0;
+
+    background:
+        var(--white);
+
+    text-align:
+        left;
+
+    cursor:
+        pointer;
+
+    overflow:
+        hidden;
+
+    box-shadow:
+        0 15px 45px
+        rgba(0,0,0,.07);
+
+    transition:
+        all .3s ease;
+
+}
+
+
+.person-card:hover {
+
+    transform:
+        translateY(-8px);
+
+    box-shadow:
+        var(--shadow);
+
+}
+
+
+.person-photo {
+
+    aspect-ratio:
+        4 / 5;
+
+    background:
+        #d8d3ca;
+
+    overflow:
+        hidden;
+
+    position:
+        relative;
+
+}
+
+
+.person-photo::after {
+
+    content:
+        "ORVANA";
+
+    position:
+        absolute;
+
+    right:
+        15px;
+
+    bottom:
+        15px;
+
+    color:
+        rgba(255,255,255,.75);
+
+    font-size:
+        10px;
+
+    font-weight:
+        700;
+
+    letter-spacing:
+        .15em;
+
+}
+
+
+.person-photo img {
+
+    width:
+        100%;
+
+    height:
+        100%;
+
+    object-fit:
+        cover;
+
+    transition:
+        transform .5s ease;
+
+}
+
+
+.person-card:hover
+.person-photo img {
+
+    transform:
+        scale(1.05);
+
+}
+
+
+.person-info {
+
+    padding:
+        24px;
+
+}
+
+
+.person-name {
+
+    font-family:
+        "Playfair Display",
+        Georgia,
+        serif;
+
+    font-size:
+        29px;
+
+    line-height:
+        1.1;
+
+}
+
+
+.person-position {
+
+    color:
+        var(--gold-dark);
+
+    font-size:
+        13px;
+
+    font-weight:
+        700;
+
+    margin-top:
+        6px;
+
+}
+
+
+.person-hint {
+
+    margin-top:
+        16px;
+
+    color:
+        var(--gray);
+
+    font-size:
+        12px;
+
+}
+
+
+/* =========================================================
+   JOURNEY
+========================================================= */
+
+.timeline {
+
+    position:
+        relative;
+
+    padding-left:
+        45px;
+
+}
+
+
+.timeline::before {
+
+    content:
+        "";
+
+    position:
+        absolute;
+
+    left:
+        10px;
+
+    top:
+        5px;
+
+    bottom:
+        5px;
+
+    width:
+        1px;
+
+    background:
+        var(--border);
+
+}
+
+
+.timeline-item {
+
+    position:
+        relative;
+
+    display:
+        grid;
+
+    grid-template-columns:
+        60px 1fr;
+
+    gap:
+        25px;
+
+    margin-bottom:
+        60px;
+
+}
+
+
+.timeline-number {
+
+    width:
+        38px;
+
+    height:
+        38px;
+
+    border-radius:
+        50%;
+
+    background:
+        var(--gold);
+
+    display:
+        grid;
+
+    place-items:
+        center;
+
+    font-size:
+        11px;
+
+    font-weight:
+        700;
+
+    position:
+        relative;
+
+    left:
+        -52px;
+
+    z-index:
+        2;
+
+}
+
+
+.timeline-label {
+
+    font-size:
+        11px;
+
+    font-weight:
+        700;
+
+    letter-spacing:
+        .2em;
+
+    color:
+        var(--gold-dark);
+
+}
+
+
+.timeline-item h3 {
+
+    font-family:
+        "Playfair Display",
+        Georgia,
+        serif;
+
+    font-size:
+        34px;
+
+    margin:
+        8px 0;
+
+}
+
+
+.timeline-item p {
+
+    color:
+        var(--gray);
+
+}
+
+
+/* =========================================================
+   CONTACT
+========================================================= */
+
+.contact-section {
+
+    padding:
+        50px 0 120px;
+
+}
+
+
+.contact-box {
+
+    background:
+        var(--cream);
+
+    padding:
+        70px;
+
+    display:
+        grid;
+
+    grid-template-columns:
+        1fr .8fr;
+
+    gap:
+        70px;
+
+    position:
+        relative;
+
+    overflow:
+        hidden;
+
+}
+
+
+.contact-box::after {
+
+    content:
+        "";
+
+    position:
+        absolute;
+
+    width:
+        350px;
+
+    height:
+        350px;
+
+    border:
+        70px solid
+        rgba(244,181,28,.2);
+
+    border-radius:
+        50%;
+
+    right:
+        -170px;
+
+    bottom:
+        -180px;
+
+}
+
+
+.contact-box h2 {
+
+    font-family:
+        "Playfair Display",
+        Georgia,
+        serif;
+
+    font-size:
+        clamp(45px,6vw,75px);
+
+    line-height:
+        1;
+
+}
+
+
+.contact-box h2 span {
+
+    color:
+        var(--gold-dark);
+
+}
+
+
+.contact-information {
+
+    position:
+        relative;
+
+    z-index:
+        2;
+
+}
+
+
+.contact-information > p {
+
+    color:
+        var(--gray);
+
+    margin-bottom:
+        25px;
+
+}
+
+
+.contact-links {
+
+    display:
+        flex;
+
+    flex-direction:
+        column;
+
+    gap:
+        10px;
+
+}
+
+
+.contact-links a {
+
+    font-weight:
+        700;
+
+}
+
+
+.contact-links a:hover {
+
+    color:
+        var(--gold-dark);
+
+}
+
+
+/* =========================================================
+   FOOTER
+========================================================= */
+
+.footer {
+
+    background:
+        var(--black);
+
+    color:
+        var(--white);
+
+    padding:
+        40px 0;
+
+}
+
+
+.footer-container {
+
+    display:
+        flex;
+
+    justify-content:
+        space-between;
+
+    align-items:
+        center;
+
+    gap:
+        30px;
+
+}
+
+
+.footer h3 {
+
+    font-family:
+        "Playfair Display",
+        Georgia,
+        serif;
+
+    font-size:
+        28px;
+
+}
+
+
+.footer p {
+
+    color:
+        #999;
+
+    font-size:
+        12px;
+
+}
+
+
+/* =========================================================
+   MODAL
+========================================================= */
+
+.employee-modal {
+
+    position:
+        fixed;
+
+    inset:
+        0;
+
+    z-index:
+        5000;
+
+    display:
+        none;
+
+    align-items:
+        center;
+
+    justify-content:
+        center;
+
+    padding:
+        20px;
+
+}
+
+
+.employee-modal.active {
+
+    display:
+        flex;
+
+}
+
+
+.modal-background {
+
+    position:
+        absolute;
+
+    inset:
+        0;
+
+    background:
+        rgba(0,0,0,.82);
+
+    backdrop-filter:
+        blur(8px);
+
+}
+
+
+.modal-container {
+
+    width:
+        min(650px,95vw);
+
+    max-height:
+        95vh;
+
+    overflow-y:
+        auto;
+
+    position:
+        relative;
+
+    z-index:
+        2;
+
+}
+
+
+.modal-close {
+
+    position:
+        absolute;
+
+    top:
+        12px;
+
+    right:
+        12px;
+
+    width:
+        44px;
+
+    height:
+        44px;
+
+    border:
+        none;
+
+    border-radius:
+        50%;
+
+    background:
+        rgba(255,255,255,.95);
+
+    font-size:
+        30px;
+
+    cursor:
+        pointer;
+
+    z-index:
+        20;
+
+}
+
+
+.modal-close:hover {
+
+    background:
+        var(--gold);
+
+}
+
+
+/* =========================================================
+   POSTER
+========================================================= */
+
+.employee-poster {
+
+    width:
+        100%;
+
+    aspect-ratio:
+        717 / 900;
+
+    background:
+        #eee9e1;
+
+    position:
+        relative;
+
+    overflow:
+        hidden;
+
+}
+
+
+/* =========================================================
+   POSTER DECORATION
+========================================================= */
+
+.poster-circle-big {
+
+    position:
+        absolute;
+
+    width:
+        110%;
+
+    height:
+        60%;
+
+    left:
+        -30%;
+
+    top:
+        32%;
+
+    border:
+        75px solid
+        rgba(0,0,0,.12);
+
+    border-radius:
+        50%;
+
+}
+
+
+.poster-circle-small {
+
+    position:
+        absolute;
+
+    width:
+        100%;
+
+    height:
+        52%;
+
+    left:
+        -22%;
+
+    top:
+        36%;
+
+    border:
+        25px solid
+        rgba(244,181,28,.25);
+
+    border-radius:
+        50%;
+
+}
+
+
+.poster-gold-shape {
+
+    position:
+        absolute;
+
+    width:
+        230px;
+
+    height:
+        230px;
+
+    right:
+        -130px;
+
+    top:
+        -130px;
+
+    background:
+        var(--gold);
+
+    transform:
+        rotate(45deg);
+
+}
+
+
+/* =========================================================
+   POSTER LOGO
+========================================================= */
+
+.poster-logo {
+
+    position:
+        absolute;
+
+    top:
+        4%;
+
+    left:
+        8%;
+
+    width:
+        55%;
+
+    z-index:
+        5;
+
+}
+
+
+.poster-logo img {
+
+    width:
+        100%;
+
+    height:
+        115px;
+
+    object-fit:
+        contain;
+
+    object-position:
+        left top;
+
+}
+
+
+/* =========================================================
+   POSTER TAGLINE
+========================================================= */
+
+.poster-tagline {
+
+    position:
+        absolute;
+
+    top:
+        18%;
+
+    left:
+        32%;
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    gap:
+        8px;
+
+    font-size:
+        13px;
+
+    z-index:
+        6;
+
+}
+
+
+.poster-tagline b {
+
+    color:
+        var(--gold-dark);
+
+}
+
+
+/* =========================================================
+   POSTER SOCIAL
+========================================================= */
+
+.poster-social {
+
+    position:
+        absolute;
+
+    top:
+        22%;
+
+    left:
+        23%;
+
+    right:
+        19%;
+
+    height:
+        58px;
+
+    background:
+        rgba(255,255,255,.96);
+
+    z-index:
+        10;
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        space-between;
+
+    padding:
+        0 17px;
+
+    box-shadow:
+        0 10px 25px
+        rgba(0,0,0,.12);
+
+}
+
+
+.social-icon {
+
+    font-size:
+        25px;
+
+}
+
+
+.social-text {
+
+    font-family:
+        "Playfair Display",
+        Georgia,
+        serif;
+
+    font-size:
+        20px;
+
+    font-weight:
+        700;
+
+}
+
+
+/* =========================================================
+   POSTER PHOTO
+========================================================= */
+
+.poster-photo {
+
+    position:
+        absolute;
+
+    left:
+        24%;
+
+    right:
+        23%;
+
+    top:
+        28%;
+
+    height:
+        49%;
+
+    background:
+        #111;
+
+    border:
+        10px solid
+        var(--white);
+
+    z-index:
+        8;
+
+    box-shadow:
+        0 12px 30px
+        rgba(0,0,0,.15);
+
+}
+
+
+.poster-photo img {
+
+    width:
+        100%;
+
+    height:
+        100%;
+
+    object-fit:
+        cover;
+
+}
+
+
+/* =========================================================
+   POSTER TEXT
+========================================================= */
+
+.poster-left-text {
+
+    position:
+        absolute;
+
+    left:
+        3%;
+
+    top:
+        47%;
+
+    font-family:
+        "Playfair Display",
+        Georgia,
+        serif;
+
+    font-style:
+        italic;
+
+    font-size:
+        25px;
+
+    line-height:
+        1.05;
+
+    font-weight:
+        700;
+
+    transform:
+        rotate(-20deg);
+
+    z-index:
+        12;
+
+}
+
+
+.poster-right-text {
+
+    position:
+        absolute;
+
+    right:
+        2%;
+
+    top:
+        42%;
+
+    text-align:
+        center;
+
+    font-family:
+        "Playfair Display",
+        Georgia,
+        serif;
+
+    font-style:
+        italic;
+
+    font-size:
+        21px;
+
+    line-height:
+        1.1;
+
+    font-weight:
+        700;
+
+    transform:
+        rotate(9deg);
+
+    z-index:
+        12;
+
+}
+
+
+/* =========================================================
+   POSTER INFORMATION
+========================================================= */
+
+.poster-information {
+
+    position:
+        absolute;
+
+    left:
+        12%;
+
+    right:
+        8%;
+
+    bottom:
+        5%;
+
+    z-index:
+        15;
+
+}
+
+
+.poster-information h2 {
+
+    font-family:
+        "Playfair Display",
+        Georgia,
+        serif;
+
+    font-style:
+        italic;
+
+    font-size:
+        clamp(34px,7vw,62px);
+
+    line-height:
+        .95;
+
+    text-shadow:
+        1px 1px 0 white;
+
+}
+
+
+.poster-information p {
+
+    font-family:
+        "Playfair Display",
+        Georgia,
+        serif;
+
+    font-style:
+        italic;
+
+    color:
+        var(--gold-dark);
+
+    font-size:
+        clamp(20px,4vw,35px);
+
+    font-weight:
+        600;
+
+}
+
+
+/* =========================================================
+   ANIMATION
+========================================================= */
+
+.reveal {
+
+    opacity:
+        0;
+
+    transform:
+        translateY(25px);
+
+    transition:
+        opacity .7s ease,
+        transform .7s ease;
+
+}
+
+
+.reveal.show {
+
+    opacity:
+        1;
+
+    transform:
+        translateY(0);
+
+}
+
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width:900px) {
+
+
+    .hero-container {
+
+        grid-template-columns:
+            1fr;
+
+        gap:
+            50px;
+
+    }
+
+
+    .hero-visual {
+
+        max-width:
+            520px;
+
+        margin:
+            auto;
+
+    }
+
+
+    .section-grid {
+
+        grid-template-columns:
+            1fr;
+
+        gap:
+            50px;
+
+    }
+
+
+    .vision-grid {
+
+        grid-template-columns:
+            1fr;
+
+    }
+
+
+    .values-grid {
+
+        grid-template-columns:
+            1fr 1fr;
+
+    }
+
+
+    .people-grid {
+
+        grid-template-columns:
+            1fr 1fr;
+
+    }
+
+
+    .contact-box {
+
+        grid-template-columns:
+            1fr;
+
+    }
+
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width:680px) {
+
+
+    .container {
+
+        width:
+            calc(100% - 28px);
+
+    }
+
+
+    .navbar-container {
+
+        min-height:
+            72px;
+
+    }
+
+
+    .logo-link img {
+
+        width:
+            125px;
+
+    }
+
+
+    .menu-button {
+
+        display:
+            block;
+
+    }
+
+
+    .navigation {
+
+        position:
+            absolute;
+
+        top:
+            72px;
+
+        left:
+            0;
+
+        right:
+            0;
+
+        display:
+            none;
+
+        flex-direction:
+            column;
+
+        align-items:
+            stretch;
+
+        gap:
+            0;
+
+        padding:
+            15px 20px 25px;
+
+        background:
+            var(--white);
+
+        border-bottom:
+            1px solid
+            var(--border);
+
+    }
+
+
+    .navigation.active {
+
+        display:
+            flex;
+
+    }
+
+
+    .navigation a {
+
+        padding:
+            13px 0;
+
+    }
+
+
+    .hero-container {
+
+        padding:
+            65px 0;
+
+    }
+
+
+    .hero h1 {
+
+        font-size:
+            65px;
+
+    }
+
+
+    .hero-description {
+
+        font-size:
+            15px;
+
+    }
+
+
+    .section {
+
+        padding:
+            80px 0;
+
+    }
+
+
+    .section-title h2,
+    .people-heading h2,
+    .center-title h2 {
+
+        font-size:
+            48px;
+
+    }
+
+
+    .values-grid {
+
+        grid-template-columns:
+            1fr;
+
+    }
+
+
+    .value-card {
+
+        min-height:
+            auto;
+
+    }
+
+
+    .value-card h3 {
+
+        margin-top:
+            65px;
+
+    }
+
+
+    .people-heading {
+
+        flex-direction:
+            column;
+
+        align-items:
+            flex-start;
+
+    }
+
+
+    .people-grid {
+
+        grid-template-columns:
+            1fr;
+
+    }
+
+
+    .vision-card {
+
+        padding:
+            35px;
+
+    }
+
+
+    .contact-box {
+
+        padding:
+            45px 28px;
+
+    }
+
+
+    .footer-container {
+
+        flex-direction:
+            column;
+
+        align-items:
+            flex-start;
+
+    }
+
+
+    .modal-container {
+
+        width:
+            96vw;
+
+    }
+
+
+    .poster-logo img {
+
+        height:
+            90px;
+
+    }
+
+
+    .poster-social {
+
+        height:
+            42px;
+
+    }
+
+
+    .social-text {
+
+        font-size:
+            14px;
+
+    }
+
+
+    .social-icon {
+
+        font-size:
+            18px;
+
+    }
+
+
+    .poster-left-text {
+
+        font-size:
+            17px;
+
+    }
+
+
+    .poster-right-text {
+
+        font-size:
+            15px;
+
+    }
+
+}
