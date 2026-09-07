@@ -13,7 +13,7 @@ const employees = [
     {
         name: "Andita",
         position: "Managing Director",
-        photo: "assets/employees/andita.jpg",
+        photo: "Andita.jpg",
         alt: "Foto Andita"
     },
 
