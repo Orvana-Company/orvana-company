@@ -2648,3 +2648,476 @@ button {
     }
 
 }
+
+/* =========================================================
+   ORVANA — PREMIUM VISUAL UPGRADE
+   Added without removing the existing design rules.
+========================================================= */
+
+:root {
+    --gold-bright: #ffd45a;
+    --ink: #070707;
+    --paper: #f7f3ec;
+    --muted: #68645e;
+}
+
+/* Smooth selection */
+::selection {
+    background: var(--gold);
+    color: var(--black);
+}
+
+/* NAVBAR — premium glass effect */
+.navbar {
+    background: rgba(255,255,255,.82);
+    box-shadow: 0 8px 35px rgba(0,0,0,.05);
+    transition: background .3s ease, box-shadow .3s ease;
+}
+
+.navbar-container {
+    min-height: 76px;
+}
+
+.navigation a {
+    transition: color .25s ease, transform .25s ease;
+}
+
+.navigation a:hover {
+    color: var(--gold-dark);
+    transform: translateY(-1px);
+}
+
+/* HERO — stronger visual hierarchy */
+.hero {
+    min-height: calc(100vh - 76px);
+    background:
+        radial-gradient(circle at 78% 45%, rgba(244,181,28,.16), transparent 28%),
+        linear-gradient(135deg, #f8f4ec 0%, #eee8de 100%);
+}
+
+.hero::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image:
+        linear-gradient(rgba(0,0,0,.025) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0,0,0,.025) 1px, transparent 1px);
+    background-size: 44px 44px;
+    mask-image: linear-gradient(to bottom, black, transparent 85%);
+    pointer-events: none;
+}
+
+.hero-container {
+    position: relative;
+    z-index: 3;
+}
+
+.hero h1 {
+    text-shadow: 0 8px 30px rgba(0,0,0,.06);
+}
+
+.hero h1 span {
+    color: transparent;
+    background: linear-gradient(90deg, #b77c00, #f4b51c, #9b6900);
+    -webkit-background-clip: text;
+    background-clip: text;
+}
+
+.hero-description {
+    line-height: 1.8;
+}
+
+.hero-buttons .button-dark {
+    box-shadow: 0 14px 30px rgba(0,0,0,.18);
+}
+
+.hero-buttons .button-dark:hover {
+    box-shadow: 0 18px 38px rgba(0,0,0,.24);
+}
+
+.hero-buttons .button-outline {
+    background: rgba(255,255,255,.35);
+}
+
+.hero-frame {
+    border-radius: 4px;
+    box-shadow: 0 30px 80px rgba(0,0,0,.18);
+    transition: transform .5s ease, box-shadow .5s ease;
+}
+
+.hero-visual:hover .hero-frame {
+    transform: rotate(0deg) translateY(-8px);
+    box-shadow: 0 38px 95px rgba(0,0,0,.22);
+}
+
+/* SECTION spacing + decorative headings */
+.section {
+    position: relative;
+}
+
+.section-number,
+.small-title,
+.section-label {
+    color: var(--gold-dark);
+}
+
+.section-title h2,
+.people-heading h2,
+.center-title h2,
+.contact h2 {
+    text-wrap: balance;
+}
+
+/* VISION */
+.vision-section {
+    background: #fff;
+}
+
+.vision-card {
+    border: 1px solid rgba(0,0,0,.07);
+    border-radius: 4px;
+    box-shadow: 0 18px 50px rgba(0,0,0,.06);
+    transition: transform .35s ease, box-shadow .35s ease;
+}
+
+.vision-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 28px 65px rgba(0,0,0,.11);
+}
+
+.dark-card {
+    background:
+        radial-gradient(circle at 85% 15%, rgba(244,181,28,.16), transparent 25%),
+        var(--black);
+}
+
+/* VALUES — more editorial / premium */
+.values-section {
+    position: relative;
+    overflow: hidden;
+    background:
+        radial-gradient(circle at 15% 10%, rgba(244,181,28,.10), transparent 25%),
+        radial-gradient(circle at 90% 85%, rgba(244,181,28,.08), transparent 30%),
+        #080808;
+}
+
+.values-section::before {
+    content: "ORVANA";
+    position: absolute;
+    left: -20px;
+    bottom: -70px;
+    font-family: "Playfair Display", Georgia, serif;
+    font-size: clamp(130px, 22vw, 300px);
+    font-weight: 700;
+    line-height: 1;
+    color: rgba(255,255,255,.025);
+    pointer-events: none;
+}
+
+.value-card {
+    position: relative;
+    overflow: hidden;
+    border-radius: 5px;
+    background: linear-gradient(145deg, rgba(255,255,255,.045), rgba(255,255,255,.015));
+    backdrop-filter: blur(4px);
+}
+
+.value-card::after {
+    content: "";
+    position: absolute;
+    width: 130px;
+    height: 130px;
+    right: -55px;
+    bottom: -55px;
+    border: 1px solid rgba(244,181,28,.28);
+    border-radius: 50%;
+    transition: transform .45s ease;
+}
+
+.value-card:hover::after {
+    transform: scale(1.35);
+}
+
+.value-card h3 {
+    letter-spacing: -.02em;
+}
+
+/* PEOPLE — make the team section a visual focal point */
+.people-section {
+    background:
+        linear-gradient(180deg, #f2eee7 0%, #ebe4d9 100%);
+}
+
+.people-heading {
+    position: relative;
+}
+
+.people-heading::after {
+    content: "06";
+    font-family: "Playfair Display", Georgia, serif;
+    font-size: 110px;
+    line-height: 1;
+    color: rgba(0,0,0,.045);
+    position: absolute;
+    right: 0;
+    bottom: -30px;
+    pointer-events: none;
+}
+
+.person-card {
+    border-radius: 5px;
+    position: relative;
+}
+
+.person-card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border: 1px solid transparent;
+    pointer-events: none;
+    z-index: 4;
+    transition: border-color .3s ease;
+}
+
+.person-card:hover::before {
+    border-color: rgba(244,181,28,.55);
+}
+
+.person-photo {
+    background:
+        linear-gradient(135deg, #d8d0c2, #aaa398);
+}
+
+.person-photo::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(0,0,0,.25), transparent 45%);
+    z-index: 1;
+    pointer-events: none;
+}
+
+.person-info {
+    position: relative;
+}
+
+.person-position {
+    letter-spacing: .03em;
+    text-transform: uppercase;
+}
+
+.person-hint {
+    display: inline-flex;
+    padding: 6px 10px;
+    border: 1px solid rgba(0,0,0,.09);
+    border-radius: 999px;
+    background: #faf8f4;
+}
+
+/* JOURNEY */
+.journey-section {
+    background: #fff;
+}
+
+.timeline::before {
+    background: linear-gradient(to bottom, var(--gold), rgba(0,0,0,.08));
+}
+
+.timeline-number {
+    box-shadow: 0 0 0 7px rgba(244,181,28,.12);
+    transition: transform .3s ease, box-shadow .3s ease;
+}
+
+.timeline-item:hover .timeline-number {
+    transform: scale(1.08);
+    box-shadow: 0 0 0 10px rgba(244,181,28,.10);
+}
+
+/* CONTACT — fixes/beautifies the current .contact markup in index.html */
+.contact {
+    padding: 110px 0 120px;
+    background:
+        radial-gradient(circle at 90% 20%, rgba(244,181,28,.12), transparent 25%),
+        #f7f3ec;
+}
+
+.section-heading {
+    max-width: 760px;
+    margin: 0 auto 55px;
+    text-align: center;
+}
+
+.section-label {
+    display: inline-block;
+    margin-bottom: 14px;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: .22em;
+}
+
+.section-heading h2 {
+    font-family: "Playfair Display", Georgia, serif;
+    font-size: clamp(48px, 6vw, 76px);
+    line-height: 1;
+    letter-spacing: -.04em;
+}
+
+.section-heading p {
+    max-width: 650px;
+    margin: 22px auto 0;
+    color: var(--gray);
+}
+
+.contact-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px;
+}
+
+.contact-card {
+    min-height: 235px;
+    padding: 30px;
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+    background: rgba(255,255,255,.72);
+    border: 1px solid rgba(0,0,0,.08);
+    border-radius: 6px;
+    box-shadow: 0 15px 45px rgba(0,0,0,.06);
+    transition: transform .3s ease, box-shadow .3s ease, border-color .3s ease;
+}
+
+.contact-card:hover {
+    transform: translateY(-7px);
+    box-shadow: 0 25px 60px rgba(0,0,0,.11);
+    border-color: rgba(244,181,28,.55);
+}
+
+.contact-icon {
+    width: 48px;
+    height: 48px;
+    flex: 0 0 48px;
+    display: grid;
+    place-items: center;
+    border-radius: 50%;
+    background: var(--black);
+    color: var(--gold);
+    font-size: 19px;
+}
+
+.contact-info span {
+    display: block;
+    color: var(--gold-dark);
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: .16em;
+    text-transform: uppercase;
+}
+
+.contact-info h3 {
+    margin-top: 8px;
+    font-size: 18px;
+    line-height: 1.35;
+}
+
+.contact-info p {
+    margin-top: 10px;
+    color: var(--gray);
+    font-size: 13px;
+    line-height: 1.6;
+}
+
+.contact-info a {
+    display: inline-block;
+    margin-top: 18px;
+    font-size: 13px;
+    font-weight: 800;
+}
+
+.contact-info a:hover {
+    color: var(--gold-dark);
+}
+
+/* FOOTER */
+.footer {
+    border-top: 1px solid rgba(255,255,255,.08);
+}
+
+.footer h3 {
+    letter-spacing: .06em;
+}
+
+/* MODAL — more premium */
+.employee-modal {
+    background: rgba(0,0,0,.35);
+}
+
+.modal-container {
+    border-radius: 6px;
+    box-shadow: 0 35px 100px rgba(0,0,0,.4);
+}
+
+.modal-close {
+    box-shadow: 0 8px 25px rgba(0,0,0,.18);
+}
+
+/* Reveal fallback: if JS is delayed/disabled, content remains accessible */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        scroll-behavior: auto !important;
+        transition-duration: .01ms !important;
+        animation-duration: .01ms !important;
+    }
+}
+
+/* TABLET */
+@media (max-width: 900px) {
+    .contact-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .contact-card {
+        min-height: 180px;
+    }
+
+    .people-heading::after {
+        font-size: 80px;
+    }
+}
+
+/* MOBILE */
+@media (max-width: 680px) {
+    .hero {
+        min-height: auto;
+    }
+
+    .hero-frame {
+        width: min(390px, 92vw);
+    }
+
+    .hero-star {
+        font-size: 55px;
+    }
+
+    .contact {
+        padding: 80px 0;
+    }
+
+    .section-heading {
+        margin-bottom: 40px;
+    }
+
+    .contact-card {
+        padding: 24px;
+    }
+
+    .contact-info h3 {
+        font-size: 16px;
+    }
+
+    .people-heading::after {
+        display: none;
+    }
+}
