@@ -2,17 +2,21 @@
 <html lang="id">
 
 <head>
-    <script>
-    const params = new URLSearchParams(window.location.search);
+   <script>
+const params = new URLSearchParams(window.location.search);
+const verified = params.get("verified") === "1";
 
-    if (params.get("verified") === "1") {
-        sessionStorage.setItem("orvanaVisitorVerified", "true");
-        window.history.replaceState({}, document.title, "index.html");
-    }
+if (verified) {
+    sessionStorage.setItem("orvanaVisitorVerified", "true");
+}
 
-    if (sessionStorage.getItem("orvanaVisitorVerified") !== "true") {
-        window.location.href = "visitor.html";
-    }
+if (!verified && sessionStorage.getItem("orvanaVisitorVerified") !== "true") {
+    window.location.replace("visitor.html");
+}
+
+if (verified) {
+    window.history.replaceState({}, document.title, "index.html");
+}
 </script>
     <meta charset="UTF-8">
 
