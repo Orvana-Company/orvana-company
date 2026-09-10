@@ -69,7 +69,7 @@ visitorForm.addEventListener("submit", async function(event) {
 
 
         sessionStorage.setItem("orvanaVisitorVerified", "true");
-         window.location.href = "index.html";
+         window.location.href = "index.html?verified=1";
 
 
     } catch (error) {
