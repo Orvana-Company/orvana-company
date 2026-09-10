@@ -3,6 +3,13 @@
 
 <head>
     <script>
+    const params = new URLSearchParams(window.location.search);
+
+    if (params.get("verified") === "1") {
+        sessionStorage.setItem("orvanaVisitorVerified", "true");
+        window.history.replaceState({}, document.title, "index.html");
+    }
+
     if (sessionStorage.getItem("orvanaVisitorVerified") !== "true") {
         window.location.href = "visitor.html";
     }
