@@ -68,7 +68,8 @@ visitorForm.addEventListener("submit", async function(event) {
         });
 
 
-        window.location.href = "index.html";
+        sessionStorage.setItem("orvanaVisitorVerified", "true");
+         window.location.href = "index.html";
 
 
     } catch (error) {
