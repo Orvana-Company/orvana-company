@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+    <title>Welcome to ORVANA</title>
+
+    <link rel="stylesheet" href="visitor.css">
+
+    <link rel="preconnect"
+        href="https://fonts.googleapis.com">
+
+    <link rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+
+    <div class="visitor-page">
+
+        <div class="visitor-decoration decoration-one"></div>
+        <div class="visitor-decoration decoration-two"></div>
+
+        <div class="visitor-card">
+
+            <div class="visitor-logo">
+                <img src="assets/logo.png"
+                    alt="ORVANA Company">
+            </div>
+
+            <p class="visitor-small-title">
+                WELCOME TO
+            </p>
+
+            <h1>
+                ORVANA
+                <span>COMPANY</span>
+            </h1>
+
+            <div class="visitor-line"></div>
+
+            <p class="visitor-description">
+                Sebelum memasuki website ORVANA,
+                silakan isi data singkat berikut.
+            </p>
+
+            <form id="visitorForm">
+
+                <div class="form-group">
+
+                    <label for="visitorName">
+                        Nama
+                    </label>
+
+                    <input
+                        type="text"
+                        id="visitorName"
+                        name="visitorName"
+                        placeholder="Masukkan nama kamu"
+                        required>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="visitorOrigin">
+                        Asal Sekolah / Instansi
+                    </label>
+
+                    <input
+                        type="text"
+                        id="visitorOrigin"
+                        name="visitorOrigin"
+                        placeholder="Contoh: SMK ABC"
+                        required>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="visitorPurpose">
+                        Tujuan Mengunjungi Website
+                    </label>
+
+                    <select
+                        id="visitorPurpose"
+                        name="visitorPurpose"
+                        required>
+
+                        <option value="">
+                            Pilih tujuan
+                        </option>
+
+                        <option value="Mengenal ORVANA">
+                            Mengenal ORVANA
+                        </option>
+
+                        <option value="Mengenal anggota ORVANA">
+                            Mengenal anggota ORVANA
+                        </option>
+
+                        <option value="Melihat informasi perusahaan">
+                            Melihat informasi perusahaan
+                        </option>
+
+                        <option value="Lainnya">
+                            Lainnya
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <button
+                    type="submit"
+                    class="visitor-button">
+
+                    Masuk ke Website ORVANA
+
+                </button>
+
+            </form>
+
+            <p class="visitor-note">
+                Data digunakan untuk keperluan pendataan
+                pengunjung ORVANA.
+            </p>
+
+        </div>
+
+    </div>
+
+    <script src="visitor.js"></script>
+
+</body>
+
+</html>

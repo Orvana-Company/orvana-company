@@ -1,0 +1,248 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --black: #080808;
+    --gold: #f4b51c;
+    --gold-dark: #c98e0b;
+    --cream: #f2eee7;
+    --white: #ffffff;
+    --gray: #77736c;
+}
+
+body {
+    font-family: "DM Sans", Arial, sans-serif;
+    background: var(--cream);
+    color: var(--black);
+}
+
+.visitor-page {
+    min-height: 100vh;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 30px;
+
+    position: relative;
+    overflow: hidden;
+}
+
+.visitor-card {
+    width: min(500px, 100%);
+
+    background: var(--white);
+
+    padding: 45px;
+
+    position: relative;
+    z-index: 5;
+
+    box-shadow:
+        0 25px 70px rgba(0, 0, 0, 0.15);
+}
+
+.visitor-logo {
+    display: flex;
+    justify-content: center;
+
+    margin-bottom: 25px;
+}
+
+.visitor-logo img {
+    width: 130px;
+}
+
+.visitor-small-title {
+    text-align: center;
+
+    font-size: 11px;
+
+    font-weight: 700;
+
+    letter-spacing: .25em;
+
+    margin-bottom: 12px;
+}
+
+.visitor-card h1 {
+    font-family: "Playfair Display", Georgia, serif;
+
+    font-size: 55px;
+
+    line-height: .9;
+
+    text-align: center;
+}
+
+.visitor-card h1 span {
+    display: block;
+
+    color: var(--gold-dark);
+
+    font-size: .42em;
+
+    letter-spacing: .08em;
+
+    margin-top: 12px;
+}
+
+.visitor-line {
+    width: 80px;
+    height: 3px;
+
+    background: var(--gold);
+
+    margin: 25px auto;
+}
+
+.visitor-description {
+    text-align: center;
+
+    color: var(--gray);
+
+    font-size: 14px;
+
+    margin-bottom: 30px;
+
+    line-height: 1.6;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+
+    font-size: 13px;
+
+    font-weight: 700;
+
+    margin-bottom: 8px;
+}
+
+.form-group input,
+.form-group select {
+    width: 100%;
+
+    padding: 14px 15px;
+
+    border: 1px solid #ddd;
+
+    background: #fafafa;
+
+    font-family: inherit;
+
+    font-size: 14px;
+
+    outline: none;
+
+    transition: .25s ease;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+    border-color: var(--gold-dark);
+
+    background: var(--white);
+
+    box-shadow:
+        0 0 0 3px rgba(244, 181, 28, .12);
+}
+
+.visitor-button {
+    width: 100%;
+
+    border: none;
+
+    background: var(--black);
+
+    color: var(--white);
+
+    padding: 16px;
+
+    margin-top: 5px;
+
+    font-family: inherit;
+
+    font-size: 14px;
+
+    font-weight: 700;
+
+    cursor: pointer;
+
+    transition: .3s ease;
+}
+
+.visitor-button:hover {
+    background: var(--gold-dark);
+
+    transform: translateY(-2px);
+}
+
+.visitor-note {
+    text-align: center;
+
+    color: #999;
+
+    font-size: 11px;
+
+    margin-top: 20px;
+
+    line-height: 1.5;
+}
+
+
+/* SHAPES */
+
+.visitor-decoration {
+    position: absolute;
+
+    border-radius: 50%;
+
+    pointer-events: none;
+}
+
+.decoration-one {
+    width: 500px;
+    height: 500px;
+
+    background: rgba(244, 181, 28, .12);
+
+    top: -250px;
+    right: -200px;
+}
+
+.decoration-two {
+    width: 400px;
+    height: 400px;
+
+    border: 70px solid rgba(0, 0, 0, .04);
+
+    bottom: -220px;
+    left: -180px;
+}
+
+
+/* MOBILE */
+
+@media (max-width: 600px) {
+
+    .visitor-page {
+        padding: 20px;
+    }
+
+    .visitor-card {
+        padding: 32px 24px;
+    }
+
+    .visitor-card h1 {
+        font-size: 45px;
+    }
+
+}
