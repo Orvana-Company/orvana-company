@@ -37,22 +37,12 @@
    BODY
 ========================================================= */
 
-body {
+
+   body {
     min-height: 100vh;
     font-family: Arial, Helvetica, sans-serif;
 
-    background:
-        radial-gradient(
-            circle at 8% 10%,
-            rgba(201, 154, 61, 0.10),
-            transparent 25%
-        ),
-        radial-gradient(
-            circle at 92% 90%,
-            rgba(0, 0, 0, 0.05),
-            transparent 28%
-        ),
-        var(--cream);
+    background: #f4ede1;
 
     color: var(--text);
     overflow-x: hidden;
