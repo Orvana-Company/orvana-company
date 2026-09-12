@@ -1,51 +1,19 @@
 const visitorForm =
     document.getElementById("visitorForm");
 
-
-const otpSection =
-    document.getElementById("otpSection");
-
-
-const otpInput =
-    document.getElementById("visitorOtp");
-
-
 const button =
     document.getElementById("visitorSubmit");
-
 
 const statusText =
     document.getElementById("visitorStatus");
 
 
+// ==========================================
+// URL GOOGLE APPS SCRIPT
+// ==========================================
+
 const googleScriptURL =
     "https://script.google.com/macros/s/AKfycbwhqvJN8IPqNB_QBKiuBH40Zt2INEkjIzarL9vw8YR5J690hsJXud0lw9mdKyz9KnbE/exec";
-
-
-let otpSent = false;
-
-
-// ==========================================
-// SESSION ID
-// ==========================================
-
-let sessionId =
-    sessionStorage.getItem(
-        "orvanaOtpSession"
-    );
-
-
-if (!sessionId) {
-
-    sessionId =
-        crypto.randomUUID();
-
-    sessionStorage.setItem(
-        "orvanaOtpSession",
-        sessionId
-    );
-
-}
 
 
 // ==========================================
@@ -60,12 +28,43 @@ visitorForm.addEventListener(
 
 
         // ==================================
-        // TAHAP 1 — KIRIM OTP
+        // AMBIL DATA
         // ==================================
 
-        if (!otpSent) {
+        const name =
+            document
+                .getElementById("visitorName")
+                .value
+                .trim();
 
-            sendOtp();
+
+        const origin =
+            document
+                .getElementById("visitorOrigin")
+                .value
+                .trim();
+
+
+        const purpose =
+            document
+                .getElementById("visitorPurpose")
+                .value;
+
+
+        // ==================================
+        // CEK DATA
+        // ==================================
+
+        if (
+            !name ||
+            !origin ||
+            !purpose
+        ) {
+
+            showStatus(
+                "Silakan lengkapi semua data terlebih dahulu.",
+                true
+            );
 
             return;
 
@@ -73,283 +72,87 @@ visitorForm.addEventListener(
 
 
         // ==================================
-        // TAHAP 2 — VERIFIKASI OTP
+        // NONAKTIFKAN BUTTON
         // ==================================
 
-        verifyOtp();
+        button.disabled = true;
+
+        button.textContent =
+            "Menyimpan data...";
+
+
+        showStatus(
+            "Sedang menyimpan data pengunjung...",
+            false
+        );
+
+
+        // ==================================
+        // KIRIM DATA KE GOOGLE APPS SCRIPT
+        // ==================================
+
+        const form =
+            document.createElement("form");
+
+
+        form.method = "POST";
+
+        form.action =
+            googleScriptURL;
+
+        form.target =
+            "googleScriptFrame";
+
+        form.style.display =
+            "none";
+
+
+        addHiddenInput(
+            form,
+            "name",
+            name
+        );
+
+
+        addHiddenInput(
+            form,
+            "origin",
+            origin
+        );
+
+
+        addHiddenInput(
+            form,
+            "purpose",
+            purpose
+        );
+
+
+        document.body.appendChild(form);
+
+
+        form.submit();
+
+
+        // Hapus form sementara
+
+        setTimeout(function() {
+
+            form.remove();
+
+        }, 3000);
 
     }
 );
 
 
 // ==========================================
-// KIRIM OTP
-// ==========================================
-
-function sendOtp() {
-
-
-    const name =
-        document
-            .getElementById("visitorName")
-            .value
-            .trim();
-
-
-    const email =
-        document
-            .getElementById("visitorEmail")
-            .value
-            .trim()
-            .toLowerCase();
-
-
-    const origin =
-        document
-            .getElementById("visitorOrigin")
-            .value
-            .trim();
-
-
-    const purpose =
-        document
-            .getElementById("visitorPurpose")
-            .value;
-
-
-    // ==================================
-    // CEK FORM
-    // ==================================
-
-    if (
-        !name ||
-        !email ||
-        !origin ||
-        !purpose
-    ) {
-
-        showStatus(
-            "Silakan lengkapi semua data terlebih dahulu.",
-            true
-        );
-
-        return;
-
-    }
-
-
-    // ==================================
-    // CEK GMAIL
-    // ==================================
-
-    if (
-        !email.endsWith("@gmail.com")
-    ) {
-
-        showStatus(
-            "Silakan gunakan alamat Gmail (@gmail.com).",
-            true
-        );
-
-        return;
-
-    }
-
-
-    button.disabled = true;
-
-    button.textContent =
-        "Mengirim kode...";
-
-
-    showStatus(
-        "Sedang mengirim kode ke Gmail...",
-        false
-    );
-
-
-    // ==================================
-    // BUAT FORM TERSEMBUNYI
-    // ==================================
-
-    const form =
-        document.createElement("form");
-
-
-    form.method = "POST";
-
-    form.action =
-        googleScriptURL;
-
-    form.target =
-        "googleScriptFrame";
-
-    form.style.display =
-        "none";
-
-
-    addHiddenInput(
-        form,
-        "action",
-        "requestOtp"
-    );
-
-
-    addHiddenInput(
-        form,
-        "sessionId",
-        sessionId
-    );
-
-
-    addHiddenInput(
-        form,
-        "name",
-        name
-    );
-
-
-    addHiddenInput(
-        form,
-        "email",
-        email
-    );
-
-
-    addHiddenInput(
-        form,
-        "origin",
-        origin
-    );
-
-
-    addHiddenInput(
-        form,
-        "purpose",
-        purpose
-    );
-
-
-    document.body.appendChild(form);
-
-
-    form.submit();
-
-
-    setTimeout(function() {
-
-        form.remove();
-
-    }, 3000);
-
-}
-
-
-// ==========================================
-// VERIFIKASI OTP
-// ==========================================
-
-function verifyOtp() {
-
-
-    const otp =
-        otpInput
-            .value
-            .trim();
-
-
-    // ==================================
-    // CEK 4 DIGIT
-    // ==================================
-
-    if (!/^\d{4}$/.test(otp)) {
-
-        showStatus(
-            "Masukkan kode verifikasi 4 digit.",
-            true
-        );
-
-        return;
-
-    }
-
-
-    button.disabled = true;
-
-    button.textContent =
-        "Memeriksa kode...";
-
-
-    showStatus(
-        "Memeriksa kode verifikasi...",
-        false
-    );
-
-
-    // ==================================
-    // FORM VERIFY
-    // ==================================
-
-    const form =
-        document.createElement("form");
-
-
-    form.method = "POST";
-
-    form.action =
-        googleScriptURL;
-
-    form.target =
-        "googleScriptFrame";
-
-    form.style.display =
-        "none";
-
-
-    addHiddenInput(
-        form,
-        "action",
-        "verifyOtp"
-    );
-
-
-    addHiddenInput(
-        form,
-        "sessionId",
-        sessionId
-    );
-
-
-    addHiddenInput(
-        form,
-        "otp",
-        otp
-    );
-
-
-    document.body.appendChild(form);
-
-
-    form.submit();
-
-
-    setTimeout(function() {
-
-        form.remove();
-
-    }, 3000);
-
-}
-
-
-// ==========================================
-// MENERIMA RESPONSE APPS SCRIPT
+// MENERIMA RESPONSE DARI GOOGLE APPS SCRIPT
 // ==========================================
 
 window.addEventListener(
     "message",
     function(event) {
-
 
         if (
             !event.data ||
@@ -366,57 +169,15 @@ window.addEventListener(
 
 
         // ==================================
-        // BERHASIL KIRIM OTP
+        // BERHASIL
         // ==================================
 
         if (
-            result.status === "success" &&
-            !otpSent
+            result.status === "success"
         ) {
 
-            otpSent = true;
-
-
-            otpSection.style.display =
-                "block";
-
-
-            otpInput.focus();
-
-
-            button.disabled = false;
-
-            button.textContent =
-                "Verifikasi Kode";
-
-
             showStatus(
-                "Kode 4 digit sudah dikirim ke Gmail kamu. Periksa inbox atau folder Spam.",
-                false
-            );
-
-
-            return;
-
-        }
-
-
-        // ==================================
-        // OTP BENAR
-        // ==================================
-
-        if (
-            result.status === "verified"
-        ) {
-
-            sessionStorage.setItem(
-                "orvanaVisitorVerified",
-                "true"
-            );
-
-
-            showStatus(
-                "Verifikasi berhasil. Membuka website ORVANA...",
+                "Data berhasil disimpan. Membuka website ORVANA...",
                 false
             );
 
@@ -424,6 +185,44 @@ window.addEventListener(
             button.textContent =
                 "Berhasil";
 
+
+            // Tandai visitor sudah mengisi data
+
+            sessionStorage.setItem(
+                "orvanaVisitorVerified",
+                "true"
+            );
+
+
+            // Simpan data visitor
+
+            sessionStorage.setItem(
+                "orvanaVisitorName",
+                document
+                    .getElementById("visitorName")
+                    .value
+                    .trim()
+            );
+
+
+            sessionStorage.setItem(
+                "orvanaVisitorOrigin",
+                document
+                    .getElementById("visitorOrigin")
+                    .value
+                    .trim()
+            );
+
+
+            sessionStorage.setItem(
+                "orvanaVisitorPurpose",
+                document
+                    .getElementById("visitorPurpose")
+                    .value
+            );
+
+
+            // Masuk ke website
 
             setTimeout(function() {
 
@@ -448,23 +247,13 @@ window.addEventListener(
 
             button.disabled = false;
 
-
-            if (otpSent) {
-
-                button.textContent =
-                    "Verifikasi Kode";
-
-            } else {
-
-                button.textContent =
-                    "Kirim Kode Verifikasi";
-
-            }
+            button.textContent =
+                "Masuk ke ORVANA";
 
 
             showStatus(
                 result.message ||
-                "Terjadi kesalahan.",
+                "Terjadi kesalahan saat menyimpan data.",
                 true
             );
 
