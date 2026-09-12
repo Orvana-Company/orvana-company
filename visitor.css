@@ -1,3 +1,9 @@
+/* =========================================================
+   ORVANA COMPANY
+   VISITOR PAGE
+   Modern Green Design
+========================================================= */
+
 * {
     margin: 0;
     padding: 0;
@@ -5,244 +11,435 @@
 }
 
 :root {
-    --black: #080808;
-    --gold: #f4b51c;
-    --gold-dark: #c98e0b;
-    --cream: #f2eee7;
+    --green-dark: #123c2a;
+    --green: #1f6b4a;
+    --green-light: #3f956d;
+    --green-soft: #e9f4ee;
     --white: #ffffff;
-    --gray: #77736c;
+    --text: #18352a;
+    --text-soft: #718078;
+    --border: #dce7e1;
+    --shadow: 0 25px 60px rgba(18, 60, 42, 0.15);
 }
 
 body {
-    font-family: "DM Sans", Arial, sans-serif;
-    background: var(--cream);
-    color: var(--black);
+    min-height: 100vh;
+    font-family: Arial, Helvetica, sans-serif;
+    background:
+        radial-gradient(circle at 10% 15%, rgba(63, 149, 109, 0.20), transparent 28%),
+        radial-gradient(circle at 90% 85%, rgba(31, 107, 74, 0.16), transparent 30%),
+        linear-gradient(135deg, #f4faf6 0%, #eaf4ee 100%);
+    color: var(--text);
+    overflow-x: hidden;
 }
 
+
+/* =========================================================
+   MAIN PAGE
+========================================================= */
+
 .visitor-page {
-    min-height: 100vh;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    padding: 30px;
-
     position: relative;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 50px 20px;
     overflow: hidden;
 }
 
-.visitor-card {
-    width: min(500px, 100%);
 
-    background: var(--white);
+/* =========================================================
+   BACKGROUND SHAPES
+========================================================= */
 
-    padding: 45px;
-
-    position: relative;
-    z-index: 5;
-
-    box-shadow:
-        0 25px 70px rgba(0, 0, 0, 0.15);
+.visitor-decoration {
+    position: absolute;
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 0;
 }
 
-.visitor-logo {
-    display: flex;
-    justify-content: center;
+.decoration-one {
+    width: 420px;
+    height: 420px;
+    top: -180px;
+    left: -150px;
+    background: rgba(31, 107, 74, 0.12);
+}
 
-    margin-bottom: 25px;
+.decoration-two {
+    width: 500px;
+    height: 500px;
+    right: -220px;
+    bottom: -230px;
+    background: rgba(63, 149, 109, 0.12);
+}
+
+
+/* =========================================================
+   VISITOR CARD
+========================================================= */
+
+.visitor-card {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    max-width: 500px;
+    padding: 42px 42px 38px;
+    background: rgba(255, 255, 255, 0.96);
+    border: 1px solid rgba(255, 255, 255, 0.8);
+    border-radius: 28px;
+    box-shadow: var(--shadow);
+    backdrop-filter: blur(12px);
+    animation: cardAppear 0.7s ease;
+}
+
+@keyframes cardAppear {
+    from {
+        opacity: 0;
+        transform: translateY(25px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+/* =========================================================
+   LOGO
+========================================================= */
+
+.visitor-logo {
+    width: 82px;
+    height: 82px;
+    margin: 0 auto 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 22px;
+    background: var(--green-soft);
+    box-shadow: 0 10px 25px rgba(31, 107, 74, 0.10);
 }
 
 .visitor-logo img {
-    width: 130px;
+    width: 65px;
+    height: 65px;
+    object-fit: contain;
+    display: block;
 }
 
-.visitor-small-title {
-    text-align: center;
 
-    font-size: 11px;
-
-    font-weight: 700;
-
-    letter-spacing: .25em;
-
-    margin-bottom: 12px;
-}
+/* =========================================================
+   TITLE
+========================================================= */
 
 .visitor-card h1 {
-    font-family: "Playfair Display", Georgia, serif;
-
-    font-size: 55px;
-
-    line-height: .9;
-
+    margin-bottom: 10px;
     text-align: center;
+    font-size: 30px;
+    line-height: 1.2;
+    font-weight: 700;
+    color: var(--green-dark);
 }
 
-.visitor-card h1 span {
-    display: block;
-
-    color: var(--gold-dark);
-
-    font-size: .42em;
-
-    letter-spacing: .08em;
-
-    margin-top: 12px;
-}
-
-.visitor-line {
-    width: 80px;
-    height: 3px;
-
-    background: var(--gold);
-
-    margin: 25px auto;
-}
-
-.visitor-description {
+.visitor-subtitle {
+    max-width: 380px;
+    margin: 0 auto 30px;
     text-align: center;
-
-    color: var(--gray);
-
     font-size: 14px;
+    line-height: 1.7;
+    color: var(--text-soft);
+}
 
-    margin-bottom: 30px;
 
-    line-height: 1.6;
+/* =========================================================
+   FORM
+========================================================= */
+
+#visitorForm {
+    width: 100%;
 }
 
 .form-group {
-    margin-bottom: 20px;
+    width: 100%;
+    margin-bottom: 19px;
 }
 
 .form-group label {
     display: block;
-
-    font-size: 13px;
-
-    font-weight: 700;
-
     margin-bottom: 8px;
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--green-dark);
 }
+
+
+/* =========================================================
+   INPUT & SELECT
+========================================================= */
 
 .form-group input,
 .form-group select {
     width: 100%;
-
-    padding: 14px 15px;
-
-    border: 1px solid #ddd;
-
-    background: #fafafa;
-
-    font-family: inherit;
-
-    font-size: 14px;
-
+    height: 50px;
+    padding: 0 15px;
+    border: 1.5px solid var(--border);
+    border-radius: 13px;
     outline: none;
+    background: #fbfdfc;
+    color: var(--text);
+    font-family: inherit;
+    font-size: 14px;
+    transition:
+        border-color 0.25s ease,
+        box-shadow 0.25s ease,
+        background 0.25s ease;
+}
 
-    transition: .25s ease;
+.form-group input::placeholder {
+    color: #a0aaa5;
+}
+
+.form-group input:hover,
+.form-group select:hover {
+    border-color: #b9d2c4;
 }
 
 .form-group input:focus,
 .form-group select:focus {
-    border-color: var(--gold-dark);
-
+    border-color: var(--green);
     background: var(--white);
-
-    box-shadow:
-        0 0 0 3px rgba(244, 181, 28, .12);
+    box-shadow: 0 0 0 4px rgba(31, 107, 74, 0.10);
 }
 
-.visitor-button {
-    width: 100%;
 
-    border: none;
+/* =========================================================
+   SELECT
+========================================================= */
 
-    background: var(--black);
-
-    color: var(--white);
-
-    padding: 16px;
-
-    margin-top: 5px;
-
-    font-family: inherit;
-
-    font-size: 14px;
-
-    font-weight: 700;
-
+.form-group select {
     cursor: pointer;
-
-    transition: .3s ease;
+    appearance: none;
+    background-image:
+        linear-gradient(45deg, transparent 50%, #688077 50%),
+        linear-gradient(135deg, #688077 50%, transparent 50%);
+    background-position:
+        calc(100% - 19px) 21px,
+        calc(100% - 14px) 21px;
+    background-size: 5px 5px;
+    background-repeat: no-repeat;
+    padding-right: 40px;
 }
 
-.visitor-button:hover {
-    background: var(--gold-dark);
 
-    transform: translateY(-2px);
-}
+/* =========================================================
+   SMALL INFORMATION TEXT
+========================================================= */
 
-.visitor-note {
-    text-align: center;
-
-    color: #999;
-
+.form-group small {
+    display: block;
+    margin-top: 7px;
     font-size: 11px;
-
-    margin-top: 20px;
-
     line-height: 1.5;
+    color: var(--text-soft);
 }
 
 
-/* SHAPES */
+/* =========================================================
+   OTP SECTION
+========================================================= */
 
-.visitor-decoration {
-    position: absolute;
-
-    border-radius: 50%;
-
-    pointer-events: none;
+#otpSection {
+    margin-top: 5px;
+    padding: 18px;
+    border: 1px solid #cfe3d7;
+    border-radius: 17px;
+    background: #f1f8f4;
+    animation: otpAppear 0.35s ease;
 }
 
-.decoration-one {
-    width: 500px;
-    height: 500px;
-
-    background: rgba(244, 181, 28, .12);
-
-    top: -250px;
-    right: -200px;
+#otpSection label {
+    color: var(--green);
 }
 
-.decoration-two {
-    width: 400px;
-    height: 400px;
+#otpSection input {
+    text-align: center;
+    letter-spacing: 8px;
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--green-dark);
+    background: white;
+}
 
-    border: 70px solid rgba(0, 0, 0, .04);
+#otpSection input::placeholder {
+    letter-spacing: 2px;
+    font-size: 13px;
+    font-weight: 400;
+}
 
-    bottom: -220px;
-    left: -180px;
+@keyframes otpAppear {
+    from {
+        opacity: 0;
+        transform: translateY(-8px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 
-/* MOBILE */
+/* =========================================================
+   STATUS MESSAGE
+========================================================= */
+
+#visitorStatus {
+    padding: 12px 14px;
+    border-radius: 11px;
+    font-size: 13px;
+    line-height: 1.5;
+    text-align: center;
+}
+
+
+/* =========================================================
+   BUTTON
+========================================================= */
+
+#visitorSubmit {
+    width: 100%;
+    height: 52px;
+    margin-top: 5px;
+    border: none;
+    border-radius: 14px;
+    background: linear-gradient(
+        135deg,
+        var(--green-dark),
+        var(--green)
+    );
+    color: white;
+    font-family: inherit;
+    font-size: 14px;
+    font-weight: 700;
+    cursor: pointer;
+    box-shadow: 0 10px 24px rgba(18, 60, 42, 0.20);
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease,
+        background 0.2s ease;
+}
+
+#visitorSubmit:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 14px 28px rgba(18, 60, 42, 0.25);
+    background: linear-gradient(
+        135deg,
+        var(--green),
+        var(--green-light)
+    );
+}
+
+#visitorSubmit:active {
+    transform: translateY(0);
+}
+
+#visitorSubmit:disabled {
+    opacity: 0.65;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
 
 @media (max-width: 600px) {
 
     .visitor-page {
-        padding: 20px;
+        padding: 25px 15px;
     }
 
     .visitor-card {
-        padding: 32px 24px;
+        max-width: 100%;
+        padding: 32px 23px 28px;
+        border-radius: 23px;
+    }
+
+    .visitor-logo {
+        width: 72px;
+        height: 72px;
+        border-radius: 19px;
+    }
+
+    .visitor-logo img {
+        width: 57px;
+        height: 57px;
     }
 
     .visitor-card h1 {
-        font-size: 45px;
+        font-size: 25px;
     }
 
+    .visitor-subtitle {
+        margin-bottom: 25px;
+        font-size: 13px;
+    }
+
+    .form-group {
+        margin-bottom: 16px;
+    }
+
+    .form-group input,
+    .form-group select {
+        height: 48px;
+    }
+
+    #visitorSubmit {
+        height: 50px;
+    }
+
+    .decoration-one {
+        width: 280px;
+        height: 280px;
+        top: -130px;
+        left: -120px;
+    }
+
+    .decoration-two {
+        width: 330px;
+        height: 330px;
+        right: -160px;
+        bottom: -150px;
+    }
+}
+
+
+/* =========================================================
+   VERY SMALL SCREEN
+========================================================= */
+
+@media (max-width: 380px) {
+
+    .visitor-card {
+        padding: 28px 18px 25px;
+    }
+
+    .visitor-card h1 {
+        font-size: 23px;
+    }
+
+    .visitor-subtitle {
+        font-size: 12px;
+    }
+
+    .form-group input,
+    .form-group select {
+        font-size: 13px;
+    }
 }
