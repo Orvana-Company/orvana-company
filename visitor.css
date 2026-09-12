@@ -1,7 +1,7 @@
 /* =========================================================
    ORVANA COMPANY
    VISITOR PAGE
-   Modern Green Design
+   Cream • Black • Gold
 ========================================================= */
 
 * {
@@ -11,24 +11,49 @@
 }
 
 :root {
-    --green-dark: #123c2a;
-    --green: #1f6b4a;
-    --green-light: #3f956d;
-    --green-soft: #e9f4ee;
+    --cream: #f4ede1;
+    --cream-light: #faf7f1;
+    --cream-soft: #eee5d6;
+
+    --black: #111111;
+    --black-soft: #1d1d1d;
+
+    --gold: #c99a3d;
+    --gold-light: #dfbb70;
+    --gold-soft: rgba(201, 154, 61, 0.12);
+
+    --text: #171717;
+    --text-soft: #777168;
+
+    --border: #ddd3c3;
+
     --white: #ffffff;
-    --text: #18352a;
-    --text-soft: #718078;
-    --border: #dce7e1;
-    --shadow: 0 25px 60px rgba(18, 60, 42, 0.15);
+
+    --shadow: 0 25px 70px rgba(25, 20, 13, 0.14);
 }
+
+
+/* =========================================================
+   BODY
+========================================================= */
 
 body {
     min-height: 100vh;
     font-family: Arial, Helvetica, sans-serif;
+
     background:
-        radial-gradient(circle at 10% 15%, rgba(63, 149, 109, 0.20), transparent 28%),
-        radial-gradient(circle at 90% 85%, rgba(31, 107, 74, 0.16), transparent 30%),
-        linear-gradient(135deg, #f4faf6 0%, #eaf4ee 100%);
+        radial-gradient(
+            circle at 8% 10%,
+            rgba(201, 154, 61, 0.10),
+            transparent 25%
+        ),
+        radial-gradient(
+            circle at 92% 90%,
+            rgba(0, 0, 0, 0.05),
+            transparent 28%
+        ),
+        var(--cream);
+
     color: var(--text);
     overflow-x: hidden;
 }
@@ -40,40 +65,61 @@ body {
 
 .visitor-page {
     position: relative;
+
     min-height: 100vh;
+
     display: flex;
     justify-content: center;
     align-items: center;
+
     padding: 50px 20px;
+
     overflow: hidden;
 }
 
 
 /* =========================================================
-   BACKGROUND SHAPES
+   BACKGROUND DECORATION
 ========================================================= */
 
 .visitor-decoration {
     position: absolute;
+
     border-radius: 50%;
+
     pointer-events: none;
+
     z-index: 0;
 }
 
+
+/* GOLD SHAPE */
+
 .decoration-one {
-    width: 420px;
-    height: 420px;
-    top: -180px;
-    left: -150px;
-    background: rgba(31, 107, 74, 0.12);
+    width: 430px;
+    height: 430px;
+
+    top: -220px;
+    left: -180px;
+
+    background: rgba(201, 154, 61, 0.10);
+
+    border: 1px solid rgba(201, 154, 61, 0.10);
 }
+
+
+/* BLACK / DARK SHAPE */
 
 .decoration-two {
     width: 500px;
     height: 500px;
-    right: -220px;
-    bottom: -230px;
-    background: rgba(63, 149, 109, 0.12);
+
+    right: -250px;
+    bottom: -270px;
+
+    background: rgba(0, 0, 0, 0.035);
+
+    border: 1px solid rgba(0, 0, 0, 0.04);
 }
 
 
@@ -83,19 +129,28 @@ body {
 
 .visitor-card {
     position: relative;
+
     z-index: 2;
+
     width: 100%;
-    max-width: 500px;
-    padding: 42px 42px 38px;
+    max-width: 550px;
+
+    padding: 45px 46px 40px;
+
     background: rgba(255, 255, 255, 0.96);
-    border: 1px solid rgba(255, 255, 255, 0.8);
-    border-radius: 28px;
+
+    border: 1px solid rgba(201, 154, 61, 0.18);
+
+    border-radius: 26px;
+
     box-shadow: var(--shadow);
-    backdrop-filter: blur(12px);
+
     animation: cardAppear 0.7s ease;
 }
 
+
 @keyframes cardAppear {
+
     from {
         opacity: 0;
         transform: translateY(25px);
@@ -105,6 +160,7 @@ body {
         opacity: 1;
         transform: translateY(0);
     }
+
 }
 
 
@@ -115,19 +171,31 @@ body {
 .visitor-logo {
     width: 82px;
     height: 82px;
-    margin: 0 auto 20px;
+
+    margin: 0 auto 22px;
+
     display: flex;
     align-items: center;
     justify-content: center;
+
     border-radius: 22px;
-    background: var(--green-soft);
-    box-shadow: 0 10px 25px rgba(31, 107, 74, 0.10);
+
+    background: var(--cream-light);
+
+    border: 1px solid rgba(201, 154, 61, 0.25);
+
+    box-shadow:
+        0 10px 30px rgba(0, 0, 0, 0.07),
+        0 0 0 6px rgba(201, 154, 61, 0.04);
 }
+
 
 .visitor-logo img {
     width: 65px;
     height: 65px;
+
     object-fit: contain;
+
     display: block;
 }
 
@@ -137,20 +205,52 @@ body {
 ========================================================= */
 
 .visitor-card h1 {
+
     margin-bottom: 10px;
+
     text-align: center;
+
     font-size: 30px;
+
     line-height: 1.2;
+
     font-weight: 700;
-    color: var(--green-dark);
+
+    color: var(--black);
 }
 
+
+/* GOLD LINE UNDER TITLE */
+
+.visitor-card h1::after {
+
+    content: "";
+
+    display: block;
+
+    width: 45px;
+    height: 2px;
+
+    margin: 14px auto 0;
+
+    background: var(--gold);
+
+    border-radius: 10px;
+}
+
+
 .visitor-subtitle {
-    max-width: 380px;
-    margin: 0 auto 30px;
+
+    max-width: 390px;
+
+    margin: 18px auto 32px;
+
     text-align: center;
+
     font-size: 14px;
+
     line-height: 1.7;
+
     color: var(--text-soft);
 }
 
@@ -163,17 +263,26 @@ body {
     width: 100%;
 }
 
+
 .form-group {
+
     width: 100%;
-    margin-bottom: 19px;
+
+    margin-bottom: 20px;
 }
 
+
 .form-group label {
+
     display: block;
+
     margin-bottom: 8px;
+
     font-size: 13px;
+
     font-weight: 700;
-    color: var(--green-dark);
+
+    color: var(--black);
 }
 
 
@@ -183,36 +292,57 @@ body {
 
 .form-group input,
 .form-group select {
+
     width: 100%;
-    height: 50px;
-    padding: 0 15px;
-    border: 1.5px solid var(--border);
-    border-radius: 13px;
+
+    height: 51px;
+
+    padding: 0 16px;
+
+    border: 1px solid var(--border);
+
+    border-radius: 12px;
+
     outline: none;
-    background: #fbfdfc;
+
+    background: var(--cream-light);
+
     color: var(--text);
+
     font-family: inherit;
+
     font-size: 14px;
+
     transition:
         border-color 0.25s ease,
         box-shadow 0.25s ease,
-        background 0.25s ease;
+        background 0.25s ease,
+        transform 0.2s ease;
 }
 
+
 .form-group input::placeholder {
-    color: #a0aaa5;
+
+    color: #aaa298;
 }
+
 
 .form-group input:hover,
 .form-group select:hover {
-    border-color: #b9d2c4;
+
+    border-color: #cbb88f;
 }
+
 
 .form-group input:focus,
 .form-group select:focus {
-    border-color: var(--green);
+
+    border-color: var(--gold);
+
     background: var(--white);
-    box-shadow: 0 0 0 4px rgba(31, 107, 74, 0.10);
+
+    box-shadow:
+        0 0 0 4px var(--gold-soft);
 }
 
 
@@ -221,16 +351,34 @@ body {
 ========================================================= */
 
 .form-group select {
+
     cursor: pointer;
+
     appearance: none;
+
     background-image:
-        linear-gradient(45deg, transparent 50%, #688077 50%),
-        linear-gradient(135deg, #688077 50%, transparent 50%);
+
+        linear-gradient(
+            45deg,
+            transparent 50%,
+            #8b7550 50%
+        ),
+
+        linear-gradient(
+            135deg,
+            #8b7550 50%,
+            transparent 50%
+        );
+
     background-position:
+
         calc(100% - 19px) 21px,
         calc(100% - 14px) 21px;
+
     background-size: 5px 5px;
+
     background-repeat: no-repeat;
+
     padding-right: 40px;
 }
 
@@ -240,10 +388,15 @@ body {
 ========================================================= */
 
 .form-group small {
+
     display: block;
+
     margin-top: 7px;
+
     font-size: 11px;
+
     line-height: 1.5;
+
     color: var(--text-soft);
 }
 
@@ -253,34 +406,57 @@ body {
 ========================================================= */
 
 #otpSection {
-    margin-top: 5px;
-    padding: 18px;
-    border: 1px solid #cfe3d7;
-    border-radius: 17px;
-    background: #f1f8f4;
+
+    margin-top: 6px;
+
+    padding: 19px;
+
+    border: 1px solid rgba(201, 154, 61, 0.30);
+
+    border-radius: 15px;
+
+    background: #f8f2e7;
+
     animation: otpAppear 0.35s ease;
 }
 
+
 #otpSection label {
-    color: var(--green);
+
+    color: var(--black);
 }
+
 
 #otpSection input {
+
     text-align: center;
+
     letter-spacing: 8px;
+
     font-size: 22px;
+
     font-weight: 700;
-    color: var(--green-dark);
-    background: white;
+
+    color: var(--black);
+
+    background: var(--white);
+
+    border-color: #d8c8a8;
 }
 
+
 #otpSection input::placeholder {
+
     letter-spacing: 2px;
+
     font-size: 13px;
+
     font-weight: 400;
 }
 
+
 @keyframes otpAppear {
+
     from {
         opacity: 0;
         transform: translateY(-8px);
@@ -290,6 +466,7 @@ body {
         opacity: 1;
         transform: translateY(0);
     }
+
 }
 
 
@@ -298,10 +475,15 @@ body {
 ========================================================= */
 
 #visitorStatus {
+
     padding: 12px 14px;
-    border-radius: 11px;
+
+    border-radius: 10px;
+
     font-size: 13px;
+
     line-height: 1.5;
+
     text-align: center;
 }
 
@@ -311,47 +493,89 @@ body {
 ========================================================= */
 
 #visitorSubmit {
+
     width: 100%;
-    height: 52px;
-    margin-top: 5px;
+
+    height: 53px;
+
+    margin-top: 6px;
+
     border: none;
-    border-radius: 14px;
-    background: linear-gradient(
-        135deg,
-        var(--green-dark),
-        var(--green)
-    );
-    color: white;
+
+    border-radius: 12px;
+
+    background: var(--black);
+
+    color: var(--white);
+
     font-family: inherit;
+
     font-size: 14px;
+
     font-weight: 700;
+
     cursor: pointer;
-    box-shadow: 0 10px 24px rgba(18, 60, 42, 0.20);
+
+    box-shadow:
+        0 10px 25px rgba(0, 0, 0, 0.18);
+
     transition:
         transform 0.2s ease,
         box-shadow 0.2s ease,
         background 0.2s ease;
 }
 
+
 #visitorSubmit:hover {
+
     transform: translateY(-2px);
-    box-shadow: 0 14px 28px rgba(18, 60, 42, 0.25);
-    background: linear-gradient(
-        135deg,
-        var(--green),
-        var(--green-light)
-    );
+
+    background: #292929;
+
+    box-shadow:
+        0 14px 30px rgba(0, 0, 0, 0.22);
 }
 
+
 #visitorSubmit:active {
+
     transform: translateY(0);
 }
 
+
 #visitorSubmit:disabled {
-    opacity: 0.65;
+
+    opacity: 0.6;
+
     cursor: not-allowed;
+
     transform: none;
+
     box-shadow: none;
+}
+
+
+/* =========================================================
+   GOLD ACCENT
+========================================================= */
+
+.visitor-card::before {
+
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+    left: 50%;
+
+    transform: translateX(-50%);
+
+    width: 80px;
+    height: 3px;
+
+    background: var(--gold);
+
+    border-radius: 0 0 10px 10px;
 }
 
 
@@ -362,61 +586,89 @@ body {
 @media (max-width: 600px) {
 
     .visitor-page {
+
         padding: 25px 15px;
     }
 
+
     .visitor-card {
+
         max-width: 100%;
-        padding: 32px 23px 28px;
-        border-radius: 23px;
+
+        padding: 35px 23px 29px;
+
+        border-radius: 22px;
     }
 
+
     .visitor-logo {
+
         width: 72px;
         height: 72px;
+
         border-radius: 19px;
     }
 
+
     .visitor-logo img {
+
         width: 57px;
         height: 57px;
     }
 
+
     .visitor-card h1 {
+
         font-size: 25px;
     }
 
+
     .visitor-subtitle {
-        margin-bottom: 25px;
+
+        margin-bottom: 26px;
+
         font-size: 13px;
     }
 
+
     .form-group {
-        margin-bottom: 16px;
+
+        margin-bottom: 17px;
     }
+
 
     .form-group input,
     .form-group select {
+
         height: 48px;
     }
 
+
     #visitorSubmit {
+
         height: 50px;
     }
 
+
     .decoration-one {
+
         width: 280px;
         height: 280px;
-        top: -130px;
-        left: -120px;
+
+        top: -145px;
+        left: -125px;
     }
 
+
     .decoration-two {
+
         width: 330px;
         height: 330px;
-        right: -160px;
-        bottom: -150px;
+
+        right: -165px;
+        bottom: -165px;
     }
+
 }
 
 
@@ -427,19 +679,27 @@ body {
 @media (max-width: 380px) {
 
     .visitor-card {
-        padding: 28px 18px 25px;
+
+        padding: 30px 18px 26px;
     }
 
+
     .visitor-card h1 {
+
         font-size: 23px;
     }
 
+
     .visitor-subtitle {
+
         font-size: 12px;
     }
 
+
     .form-group input,
     .form-group select {
+
         font-size: 13px;
     }
+
 }
