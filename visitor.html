@@ -2,74 +2,107 @@
 <html lang="id">
 
 <head>
+
     <meta charset="UTF-8">
 
-    <meta name="viewport"
-        content="width=device-width, initial-scale=1.0">
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
 
-    <title>Welcome to ORVANA</title>
-
-    <link rel="stylesheet" href="visitor.css">
-
-    <link rel="preconnect"
-        href="https://fonts.googleapis.com">
-
-    <link rel="preconnect"
-        href="https://fonts.gstatic.com"
-        crossorigin>
+    <title>Data Pengunjung | ORVANA</title>
 
     <link
-        href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap"
-        rel="stylesheet">
+        rel="stylesheet"
+        href="visitor.css"
+    >
+
 </head>
+
 
 <body>
 
     <div class="visitor-page">
 
+
         <div class="visitor-decoration decoration-one"></div>
+
         <div class="visitor-decoration decoration-two"></div>
+
 
         <div class="visitor-card">
 
+
             <div class="visitor-logo">
-                <img src="assets/logo.png"
-                    alt="ORVANA Company">
+
+                <img
+                    src="logo.png"
+                    alt="Logo ORVANA"
+                >
+
             </div>
 
-            <p class="visitor-small-title">
-                WELCOME TO
-            </p>
 
             <h1>
-                ORVANA
-                <span>COMPANY</span>
+                Selamat Datang di ORVANA
             </h1>
 
-            <div class="visitor-line"></div>
 
-            <p class="visitor-description">
-                Sebelum memasuki website ORVANA,
-                silakan isi data singkat berikut.
+            <p class="visitor-subtitle">
+
+                Silakan isi data diri untuk
+                melanjutkan ke website ORVANA.
+
             </p>
 
+
             <form id="visitorForm">
+
+
+                <!-- NAMA -->
 
                 <div class="form-group">
 
                     <label for="visitorName">
-                        Nama
+                        Nama Lengkap
                     </label>
 
                     <input
                         type="text"
                         id="visitorName"
-                        name="visitorName"
-                        placeholder="Masukkan nama kamu"
-                        required>
+                        placeholder="Masukkan nama lengkap"
+                        autocomplete="name"
+                        required
+                    >
 
                 </div>
 
+
+                <!-- GMAIL -->
+
+                <div class="form-group">
+
+                    <label for="visitorEmail">
+                        Gmail
+                    </label>
+
+                    <input
+                        type="email"
+                        id="visitorEmail"
+                        placeholder="contoh@gmail.com"
+                        autocomplete="email"
+                        required
+                    >
+
+                    <small>
+                        Kode verifikasi akan dikirim
+                        ke Gmail ini.
+                    </small>
+
+                </div>
+
+
+                <!-- ASAL -->
 
                 <div class="form-group">
 
@@ -80,30 +113,28 @@
                     <input
                         type="text"
                         id="visitorOrigin"
-                        name="visitorOrigin"
-                        placeholder="Contoh: SMK ABC"
-                        required>
+                        placeholder="Masukkan sekolah / instansi"
+                        required
+                    >
 
                 </div>
 
 
+                <!-- TUJUAN -->
+
                 <div class="form-group">
 
                     <label for="visitorPurpose">
-                        Tujuan Mengunjungi Website
+                        Tujuan Kunjungan
                     </label>
 
                     <select
                         id="visitorPurpose"
-                        name="visitorPurpose"
-                        required>
+                        required
+                    >
 
                         <option value="">
-                            Pilih tujuan
-                        </option>
-
-                        <option value="Mengenal ORVANA">
-                            Mengenal ORVANA
+                            Pilih tujuan kunjungan
                         </option>
 
                         <option value="Mengenal anggota ORVANA">
@@ -112,6 +143,10 @@
 
                         <option value="Melihat informasi perusahaan">
                             Melihat informasi perusahaan
+                        </option>
+
+                        <option value="Mencari informasi">
+                            Mencari informasi
                         </option>
 
                         <option value="Lainnya">
@@ -123,24 +158,74 @@
                 </div>
 
 
+                <!-- OTP -->
+
+                <div
+                    class="form-group"
+                    id="otpSection"
+                    style="display: none;"
+                >
+
+                    <label for="visitorOtp">
+                        Kode Verifikasi
+                    </label>
+
+                    <input
+                        type="text"
+                        id="visitorOtp"
+                        placeholder="Masukkan 4 digit kode"
+                        inputmode="numeric"
+                        maxlength="4"
+                        autocomplete="one-time-code"
+                    >
+
+                    <small>
+                        Periksa inbox Gmail kamu.
+                    </small>
+
+                </div>
+
+
+                <!-- STATUS -->
+
+                <p
+                    id="visitorStatus"
+                    style="
+                        display: none;
+                        margin-top: 12px;
+                    "
+                ></p>
+
+
+                <!-- BUTTON -->
+
                 <button
                     type="submit"
-                    class="visitor-button">
-
-                    Masuk ke Website ORVANA
-
+                    id="visitorSubmit"
+                >
+                    Kirim Kode Verifikasi
                 </button>
+
 
             </form>
 
-            <p class="visitor-note">
-                Data digunakan untuk keperluan pendataan
-                pengunjung ORVANA.
-            </p>
 
         </div>
 
     </div>
+
+
+    <!--
+        IFRAME UNTUK KOMUNIKASI
+        DENGAN GOOGLE APPS SCRIPT
+    -->
+
+    <iframe
+        name="googleScriptFrame"
+        id="googleScriptFrame"
+        style="display: none;"
+    ></iframe>
+
 
     <script src="visitor.js"></script>
 

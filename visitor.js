@@ -2,94 +2,536 @@ const visitorForm =
     document.getElementById("visitorForm");
 
 
-visitorForm.addEventListener("submit", async function(event) {
+const otpSection =
+    document.getElementById("otpSection");
 
-    event.preventDefault();
+
+const otpInput =
+    document.getElementById("visitorOtp");
+
+
+const button =
+    document.getElementById("visitorSubmit");
+
+
+const statusText =
+    document.getElementById("visitorStatus");
+
+
+const googleScriptURL =
+    "https://script.google.com/macros/s/AKfycbwhqvJN8IPqNB_QBKiuBH40Zt2INEkjIzarL9vw8YR5J690hsJXud0lw9mdKyz9KnbE/exec";
+
+
+let otpSent = false;
+
+
+// ==========================================
+// SESSION ID
+// ==========================================
+
+let sessionId =
+    sessionStorage.getItem(
+        "orvanaOtpSession"
+    );
+
+
+if (!sessionId) {
+
+    sessionId =
+        crypto.randomUUID();
+
+    sessionStorage.setItem(
+        "orvanaOtpSession",
+        sessionId
+    );
+
+}
+
+
+// ==========================================
+// FORM SUBMIT
+// ==========================================
+
+visitorForm.addEventListener(
+    "submit",
+    function(event) {
+
+        event.preventDefault();
+
+
+        // ==================================
+        // TAHAP 1 — KIRIM OTP
+        // ==================================
+
+        if (!otpSent) {
+
+            sendOtp();
+
+            return;
+
+        }
+
+
+        // ==================================
+        // TAHAP 2 — VERIFIKASI OTP
+        // ==================================
+
+        verifyOtp();
+
+    }
+);
+
+
+// ==========================================
+// KIRIM OTP
+// ==========================================
+
+function sendOtp() {
 
 
     const name =
-        document.getElementById("visitorName").value.trim();
+        document
+            .getElementById("visitorName")
+            .value
+            .trim();
+
+
+    const email =
+        document
+            .getElementById("visitorEmail")
+            .value
+            .trim()
+            .toLowerCase();
+
 
     const origin =
-        document.getElementById("visitorOrigin").value.trim();
+        document
+            .getElementById("visitorOrigin")
+            .value
+            .trim();
+
 
     const purpose =
-        document.getElementById("visitorPurpose").value;
+        document
+            .getElementById("visitorPurpose")
+            .value;
 
 
-    if (!name || !origin || !purpose) {
+    // ==================================
+    // CEK FORM
+    // ==================================
 
-        alert("Silakan lengkapi semua data terlebih dahulu.");
+    if (
+        !name ||
+        !email ||
+        !origin ||
+        !purpose
+    ) {
+
+        showStatus(
+            "Silakan lengkapi semua data terlebih dahulu.",
+            true
+        );
 
         return;
+
     }
 
 
-    const visitorData = {
+    // ==================================
+    // CEK GMAIL
+    // ==================================
 
-        name: name,
+    if (
+        !email.endsWith("@gmail.com")
+    ) {
 
-        origin: origin,
+        showStatus(
+            "Silakan gunakan alamat Gmail (@gmail.com).",
+            true
+        );
 
-        purpose: purpose,
+        return;
 
-        time: new Date().toLocaleString("id-ID")
-
-    };
-
-
-    const googleScriptURL =
-        "https://script.google.com/macros/s/AKfycbwhqvJN8IPqNB_QBKiuBH40Zt2INEkjIzarL9vw8YR5J690hsJXud0lw9mdKyz9KnbE/exec";
-
-
-    const button =
-        visitorForm.querySelector("button");
+    }
 
 
     button.disabled = true;
 
-    button.textContent = "Memproses...";
+    button.textContent =
+        "Mengirim kode...";
 
 
-    try {
-
-        await fetch(googleScriptURL, {
-
-            method: "POST",
-
-            mode: "no-cors",
-
-            headers: {
-                "Content-Type": "text/plain;charset=utf-8"
-            },
-
-            body: JSON.stringify(visitorData)
-
-        });
+    showStatus(
+        "Sedang mengirim kode ke Gmail...",
+        false
+    );
 
 
-        sessionStorage.setItem("orvanaVisitorVerified", "true");
-         window.location.href = "index.html?verified=1";
+    // ==================================
+    // BUAT FORM TERSEMBUNYI
+    // ==================================
+
+    const form =
+        document.createElement("form");
 
 
-    } catch (error) {
+    form.method = "POST";
 
-        console.error(
-            "Gagal mengirim data:",
-            error
+    form.action =
+        googleScriptURL;
+
+    form.target =
+        "googleScriptFrame";
+
+    form.style.display =
+        "none";
+
+
+    addHiddenInput(
+        form,
+        "action",
+        "requestOtp"
+    );
+
+
+    addHiddenInput(
+        form,
+        "sessionId",
+        sessionId
+    );
+
+
+    addHiddenInput(
+        form,
+        "name",
+        name
+    );
+
+
+    addHiddenInput(
+        form,
+        "email",
+        email
+    );
+
+
+    addHiddenInput(
+        form,
+        "origin",
+        origin
+    );
+
+
+    addHiddenInput(
+        form,
+        "purpose",
+        purpose
+    );
+
+
+    document.body.appendChild(form);
+
+
+    form.submit();
+
+
+    setTimeout(function() {
+
+        form.remove();
+
+    }, 3000);
+
+}
+
+
+// ==========================================
+// VERIFIKASI OTP
+// ==========================================
+
+function verifyOtp() {
+
+
+    const otp =
+        otpInput
+            .value
+            .trim();
+
+
+    // ==================================
+    // CEK 4 DIGIT
+    // ==================================
+
+    if (!/^\d{4}$/.test(otp)) {
+
+        showStatus(
+            "Masukkan kode verifikasi 4 digit.",
+            true
         );
 
-
-        alert(
-            "Data belum berhasil dikirim. Silakan coba lagi."
-        );
-
-
-        button.disabled = false;
-
-        button.textContent =
-            "Masuk ke Website ORVANA";
+        return;
 
     }
 
-});
+
+    button.disabled = true;
+
+    button.textContent =
+        "Memeriksa kode...";
+
+
+    showStatus(
+        "Memeriksa kode verifikasi...",
+        false
+    );
+
+
+    // ==================================
+    // FORM VERIFY
+    // ==================================
+
+    const form =
+        document.createElement("form");
+
+
+    form.method = "POST";
+
+    form.action =
+        googleScriptURL;
+
+    form.target =
+        "googleScriptFrame";
+
+    form.style.display =
+        "none";
+
+
+    addHiddenInput(
+        form,
+        "action",
+        "verifyOtp"
+    );
+
+
+    addHiddenInput(
+        form,
+        "sessionId",
+        sessionId
+    );
+
+
+    addHiddenInput(
+        form,
+        "otp",
+        otp
+    );
+
+
+    document.body.appendChild(form);
+
+
+    form.submit();
+
+
+    setTimeout(function() {
+
+        form.remove();
+
+    }, 3000);
+
+}
+
+
+// ==========================================
+// MENERIMA RESPONSE APPS SCRIPT
+// ==========================================
+
+window.addEventListener(
+    "message",
+    function(event) {
+
+
+        if (
+            !event.data ||
+            !event.data.status
+        ) {
+
+            return;
+
+        }
+
+
+        const result =
+            event.data;
+
+
+        // ==================================
+        // BERHASIL KIRIM OTP
+        // ==================================
+
+        if (
+            result.status === "success" &&
+            !otpSent
+        ) {
+
+            otpSent = true;
+
+
+            otpSection.style.display =
+                "block";
+
+
+            otpInput.focus();
+
+
+            button.disabled = false;
+
+            button.textContent =
+                "Verifikasi Kode";
+
+
+            showStatus(
+                "Kode 4 digit sudah dikirim ke Gmail kamu. Periksa inbox atau folder Spam.",
+                false
+            );
+
+
+            return;
+
+        }
+
+
+        // ==================================
+        // OTP BENAR
+        // ==================================
+
+        if (
+            result.status === "verified"
+        ) {
+
+            sessionStorage.setItem(
+                "orvanaVisitorVerified",
+                "true"
+            );
+
+
+            showStatus(
+                "Verifikasi berhasil. Membuka website ORVANA...",
+                false
+            );
+
+
+            button.textContent =
+                "Berhasil";
+
+
+            setTimeout(function() {
+
+                window.location.href =
+                    "index.html?verified=1";
+
+            }, 700);
+
+
+            return;
+
+        }
+
+
+        // ==================================
+        // ERROR
+        // ==================================
+
+        if (
+            result.status === "error"
+        ) {
+
+            button.disabled = false;
+
+
+            if (otpSent) {
+
+                button.textContent =
+                    "Verifikasi Kode";
+
+            } else {
+
+                button.textContent =
+                    "Kirim Kode Verifikasi";
+
+            }
+
+
+            showStatus(
+                result.message ||
+                "Terjadi kesalahan.",
+                true
+            );
+
+        }
+
+    }
+);
+
+
+// ==========================================
+// TAMBAHKAN INPUT TERSEMBUNYI
+// ==========================================
+
+function addHiddenInput(
+    form,
+    name,
+    value
+) {
+
+    const input =
+        document.createElement("input");
+
+
+    input.type =
+        "hidden";
+
+
+    input.name =
+        name;
+
+
+    input.value =
+        value;
+
+
+    form.appendChild(input);
+
+}
+
+
+// ==========================================
+// STATUS
+// ==========================================
+
+function showStatus(
+    message,
+    isError
+) {
+
+    statusText.style.display =
+        "block";
+
+
+    statusText.textContent =
+        message;
+
+
+    if (isError) {
+
+        statusText.style.color =
+            "#c62828";
+
+    } else {
+
+        statusText.style.color =
+            "#2e7d32";
+
+    }
+
+}
