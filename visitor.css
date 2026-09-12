@@ -70,6 +70,117 @@
 
 /* =========================================================
    BACKGROUND DECORATION
+   CREAM • BLACK • GOLD • ANIMATED
+========================================================= */
+
+.visitor-page {
+    position: relative;
+    min-height: 100vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding: 50px 20px;
+
+    overflow: hidden;
+
+    /* Cream utama */
+    background:
+        radial-gradient(
+            circle at 15% 20%,
+            rgba(201, 154, 61, 0.10),
+            transparent 24%
+        ),
+        radial-gradient(
+            circle at 85% 75%,
+            rgba(17, 17, 17, 0.045),
+            transparent 25%
+        ),
+        linear-gradient(
+            135deg,
+            #faf7f1 0%,
+            #f4ede1 48%,
+            #eee5d6 100%
+        );
+}
+
+
+/* =========================================================
+   SHAPE GOLD KIRI ATAS
+========================================================= */
+
+.visitor-page::before {
+    content: "";
+
+    position: absolute;
+
+    width: 420px;
+    height: 420px;
+
+    top: -230px;
+    left: -170px;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(201, 154, 61, 0.18) 0%,
+            rgba(201, 154, 61, 0.09) 48%,
+            rgba(201, 154, 61, 0.02) 70%,
+            transparent 72%
+        );
+
+    border: 1px solid rgba(201, 154, 61, 0.13);
+
+    pointer-events: none;
+
+    z-index: 0;
+
+    animation:
+        goldFloat 12s ease-in-out infinite;
+}
+
+
+/* =========================================================
+   SHAPE KANAN BAWAH
+========================================================= */
+
+.visitor-page::after {
+    content: "";
+
+    position: absolute;
+
+    width: 470px;
+    height: 470px;
+
+    right: -240px;
+    bottom: -250px;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(17, 17, 17, 0.07) 0%,
+            rgba(17, 17, 17, 0.035) 45%,
+            transparent 70%
+        );
+
+    border: 1px solid rgba(17, 17, 17, 0.055);
+
+    pointer-events: none;
+
+    z-index: 0;
+
+    animation:
+        darkFloat 15s ease-in-out infinite;
+}
+
+
+/* =========================================================
+   SHAPE YANG SUDAH ADA
 ========================================================= */
 
 .visitor-decoration {
@@ -83,35 +194,194 @@
 }
 
 
-/* GOLD SHAPE */
+/* GOLD SHAPE TAMBAHAN */
 
 .decoration-one {
-    width: 430px;
-    height: 430px;
+    width: 180px;
+    height: 180px;
 
-    top: -220px;
-    left: -180px;
+    top: 18%;
+    right: 8%;
 
-    background: rgba(201, 154, 61, 0.10);
+    background:
+        radial-gradient(
+            circle,
+            rgba(201, 154, 61, 0.14),
+            rgba(201, 154, 61, 0.035) 60%,
+            transparent 72%
+        );
 
-    border: 1px solid rgba(201, 154, 61, 0.10);
+    border: 1px solid rgba(201, 154, 61, 0.12);
+
+    animation:
+        floatingCircle 9s ease-in-out infinite;
 }
 
 
-/* BLACK / DARK SHAPE */
+/* BLACK SHAPE TAMBAHAN */
 
 .decoration-two {
-    width: 500px;
-    height: 500px;
+    width: 130px;
+    height: 130px;
 
-    right: -250px;
-    bottom: -270px;
+    left: 7%;
+    bottom: 15%;
 
-    background: rgba(0, 0, 0, 0.035);
+    background:
+        rgba(17, 17, 17, 0.035);
 
-    border: 1px solid rgba(0, 0, 0, 0.04);
+    border: 1px solid rgba(17, 17, 17, 0.06);
+
+    animation:
+        floatingCircleReverse 11s ease-in-out infinite;
 }
 
+
+/* =========================================================
+   LINGKARAN-LINGKARAN KECIL
+   Dibuat dengan box-shadow
+========================================================= */
+
+.visitor-card::after {
+    content: "";
+
+    position: absolute;
+
+    width: 18px;
+    height: 18px;
+
+    top: -70px;
+    left: -120px;
+
+    border-radius: 50%;
+
+    background: rgba(201, 154, 61, 0.25);
+
+    box-shadow:
+        170px 130px 0 rgba(201, 154, 61, 0.16),
+        360px 50px 0 rgba(17, 17, 17, 0.08),
+        480px 210px 0 rgba(201, 154, 61, 0.20),
+        -40px 350px 0 rgba(17, 17, 17, 0.06),
+        570px 390px 0 rgba(201, 154, 61, 0.12);
+
+    pointer-events: none;
+
+    z-index: -1;
+
+    animation:
+        dotsFloat 10s ease-in-out infinite;
+}
+
+
+/* =========================================================
+   GARIS GOLD DEKORATIF
+========================================================= */
+
+.visitor-page {
+    background-image:
+        linear-gradient(
+            115deg,
+            transparent 0%,
+            transparent 47%,
+            rgba(201, 154, 61, 0.035) 48%,
+            transparent 49%,
+            transparent 100%
+        ),
+        radial-gradient(
+            circle at 15% 20%,
+            rgba(201, 154, 61, 0.10),
+            transparent 24%
+        ),
+        radial-gradient(
+            circle at 85% 75%,
+            rgba(17, 17, 17, 0.045),
+            transparent 25%
+        ),
+        linear-gradient(
+            135deg,
+            #faf7f1 0%,
+            #f4ede1 48%,
+            #eee5d6 100%
+        );
+}
+
+
+/* =========================================================
+   ANIMASI
+========================================================= */
+
+@keyframes goldFloat {
+
+    0%, 100% {
+        transform:
+            translate(0, 0)
+            scale(1);
+    }
+
+    50% {
+        transform:
+            translate(35px, 25px)
+            scale(1.08);
+    }
+}
+
+
+@keyframes darkFloat {
+
+    0%, 100% {
+        transform:
+            translate(0, 0)
+            scale(1);
+    }
+
+    50% {
+        transform:
+            translate(-30px, -25px)
+            scale(1.06);
+    }
+}
+
+
+@keyframes floatingCircle {
+
+    0%, 100% {
+        transform:
+            translate(0, 0);
+    }
+
+    50% {
+        transform:
+            translate(-25px, 30px);
+    }
+}
+
+
+@keyframes floatingCircleReverse {
+
+    0%, 100% {
+        transform:
+            translate(0, 0);
+    }
+
+    50% {
+        transform:
+            translate(25px, -25px);
+    }
+}
+
+
+@keyframes dotsFloat {
+
+    0%, 100% {
+        transform:
+            translate(0, 0);
+    }
+
+    50% {
+        transform:
+            translate(10px, -20px);
+    }
+}
 
 /* =========================================================
    VISITOR CARD
