@@ -1180,6 +1180,18 @@ button {
         24px;
 
 }
+/* =========================================================
+   ARNOLD - GURU / PEMBIMBING
+   SENDIRI DI TENGAH ATAS
+========================================================= */
+
+.people-grid .person-card:first-child {
+
+    grid-column: 1 / -1;
+
+    justify-self: center;
+
+}
 
 
 /* =========================================================
