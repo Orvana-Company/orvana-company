@@ -8,56 +8,59 @@
    DATA 6 ANGGOTA ORVANA 
 ========================================================= */ 
  
-const employees = [ 
- 
-    { 
-        name: "Andita Sinaga", 
-        position: "Managing Director", 
-        photo: "assets/employees/andita.jpg", 
-        alt: "Foto Andita Sinaga" 
-    }, 
- 
- 
-    { 
-        name: "Hosea Siregar", 
-        position: "Treasury Officer", 
-        photo: "assets/employees/hosea-siregar.jpg", 
-        alt: "Foto Hosea Siregar" 
-    }, 
- 
- 
-    { 
-        name: "Rebekka Silaen", 
-        position: "Mitra Organisasi", 
-        photo: "assets/employees/rebekka-silaen.jpg", 
-        alt: "Foto Rebekka Silaen" 
-    }, 
- 
- 
-    { 
-        name: "Dimas Tamba", 
-        position: "Mitra Organisasi", 
-        photo: "assets/employees/dimas-tamba.jpg", 
-        alt: "Foto Dimas Tamba" 
-    }, 
- 
- 
-    { 
-        name: "Sela Pandiangan", 
-        position: "Mitra Organisasi", 
-        photo: "assets/employees/sela-pandiangan.jpg", 
-        alt: "Foto Sela Pandiangan" 
-    }, 
- 
- 
-    { 
-        name: "Rehan Pandiangan", 
-        position: "Mitra Organisasi", 
-        photo: "assets/employees/rehan-pandiangan.jpg", 
-        alt: "Foto Rehan Pandiangan" 
-    } 
- 
-]; 
+const employees = [
+
+    {
+        name: "Mr. Arnold H. Simbolon",
+        position: "Konsultan Akademik",
+        photo: "assets/employees/arnold-simbolon.jpg",
+        alt: "Foto Mr. Arnold H. Simbolon",
+        isTeacher: true
+    },
+
+    {
+        name: "Andita Sinaga",
+        position: "Managing Director",
+        photo: "assets/employees/andita.jpg",
+        alt: "Foto Andita Sinaga"
+    },
+
+    {
+        name: "Hosea Siregar",
+        position: "Treasury Officer",
+        photo: "assets/employees/hosea-siregar.jpg",
+        alt: "Foto Hosea Siregar"
+    },
+
+    {
+        name: "Rebekka Silaen",
+        position: "Mitra Organisasi",
+        photo: "assets/employees/rebekka-silaen.jpg",
+        alt: "Foto Rebekka Silaen"
+    },
+
+    {
+        name: "Dimas Tamba",
+        position: "Mitra Organisasi",
+        photo: "assets/employees/dimas-tamba.jpg",
+        alt: "Foto Dimas Tamba"
+    },
+
+    {
+        name: "Sela Pandiangan",
+        position: "Mitra Organisasi",
+        photo: "assets/employees/sela-pandiangan.jpg",
+        alt: "Foto Sela Pandiangan"
+    },
+
+    {
+        name: "Rehan Pandiangan",
+        position: "Mitra Organisasi",
+        photo: "assets/employees/rehan-pandiangan.jpg",
+        alt: "Foto Rehan Pandiangan"
+    }
+
+];
  
  
  
